@@ -19,7 +19,19 @@ This workflow generates a commit message based on the current changes according 
    - Describe the detailed changes as a bulleted list using hyphens (`-`).
    - If an associated Issue number is known, add it at the very end after a newline, formatted like `#123`.
 
-3. **Present the Commit Message**
+3. **Branch Safety Check (when actually committing)**
+   - Run `git branch --show-current` and check the current branch.
+   - If the branch is `main` or `master`, do **not** commit directly on that branch.
+   - Derive a new branch name from the commit content and create/switch to it before committing.
+     - If an Issue key is known, prepend it in the branch suffix.
+     - Recommended format:
+       - With Issue key: `<type>/<issue-key>-<short-summary-slug>`
+       - Without Issue key: `<type>/<short-summary-slug>`
+     - Example: `feat/PROJ-123-add-profile-image`, `feat/#45-add-image-upload`, `fix/handle-token-refresh`
+   - Create and switch: `git switch -c <new-branch-name>`
+   - After switching, run commit on the new branch.
+
+4. **Present the Commit Message**
    - Output the generated commit message **ONLY within a Markdown code block** so the user can copy and paste it directly. Do not include any extra commentary inside the code block.
 
 ---
