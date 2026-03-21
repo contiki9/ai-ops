@@ -48,9 +48,11 @@ it with `gh issue create`.
 
 ## Command Example
 
+`--body`にヒアドキュメントで本文を渡す方法と、`--body-file`でファイルを渡す方法があります。
+
+### ヒアドキュメントを使う場合
 ```bash
-gh issue create --title "タイトル" --body "$(cat <<'EOF'
+gh issue create --title "タイトル" --body "$(cat <<<'EOF'
 本文
 EOF
 )"
-```
