@@ -35,7 +35,7 @@ Claude Code のコマンドやコンテキストとして利用するために�
 ## コマンド一覧（一部）
 - `code-quality/` : `lint-fix.md`, `refactor-code.md`, `deslop.md` など
 - `documentation/` : `generate-api-docs.md`, `onboard-new-developer.md` など
-- `git/` : `code-review.md`, `create-pr.md`, `git-commit.md` など
+- `git/` : `code-review.md`, `create-pr.md`, `git-commit.md`, `git-commit-detailed.md` など
 - `testing/` : `run-all-tests-and-fix.md`, `debug-issue.md` など
 - `security/` : `security-audit.md` など
 
