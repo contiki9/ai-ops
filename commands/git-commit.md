@@ -18,7 +18,16 @@ Create a short, focused commit message and commit staged changes.
     - This is optional - commits can be made without an issue key
 3. **Stage changes (if not already staged)**
     - `git add -A`
-4. **Create short commit message**
+4. **Branch safety check**
+    - Run `git branch --show-current` and check the current branch
+    - If the branch is `main` or `master`, do **not** commit directly on that branch
+    - Create and switch to a new branch based on the commit content before committing
+    - Branch naming rule:
+      - With Issue number: `<type>/#<issue-number>-<short-summary-slug>`
+      - Without Issue number: `<type>/<short-summary-slug>`
+    - Example: `feat/#00-example-example`, `feat/#45-add-profile-image-upload`, `fix/handle-token-refresh`
+    - Create and switch: `git switch -c <new-branch-name>`
+5. **Create short commit message**
     - Base the message on the actual changes in the diff
     - Example: `git commit -m "fix(auth): handle expired token refresh"`
     - Example with issue key: `git commit -m "PROJ-123: fix(auth): handle expired token refresh"`
