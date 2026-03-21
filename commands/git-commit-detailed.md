@@ -23,11 +23,11 @@ This workflow generates a commit message based on the current changes according 
    - Run `git branch --show-current` and check the current branch.
    - If the branch is `main` or `master`, do **not** commit directly on that branch.
    - Derive a new branch name from the commit content and create/switch to it before committing.
-     - If an Issue number is known, prepend it in the branch suffix.
+     - If an Issue key is known, prepend it in the branch suffix.
      - Recommended format:
-       - With Issue: `<type>/#<issue-number>-<short-summary-slug>`
-       - Without Issue: `<type>/<short-summary-slug>`
-     - Example: `feat/#00-example-example`, `feat/#45-add-profile-image-upload`, `fix/handle-token-refresh`
+       - With Issue key: `<type>/<issue-key>-<short-summary-slug>`
+       - Without Issue key: `<type>/<short-summary-slug>`
+     - Example: `feat/PROJ-123-add-profile-image`, `feat/#45-add-image-upload`, `fix/handle-token-refresh`
    - Create and switch: `git switch -c <new-branch-name>`
    - After switching, run commit on the new branch.
 
