@@ -5,54 +5,61 @@ description: GitHub Issueを作成する
 
 ## Overview
 
-Create a clear GitHub Issue from the user's request.
-Investigate related code first, draft the Issue, get user approval, then create
-it with `gh issue create`.
+Create a clear and reproducible GitHub Issue from the user's request.
+Review related code and existing templates first, draft the issue, get user approval,
+then create it with `gh issue create`.
 
 ## Steps
 
 1. **Confirm request**
-    - Collect problem/proposal details from the user
-    - Ask follow-up questions only when required info is missing
+    - Collect the problem statement, background, and expected outcome from the user
+    - Ask follow-up questions only when required information is missing
 2. **Select issue type**
-    - Bug/defect: use bug-style sections
-    - Feature/proposal: use proposal-style sections
-    - If `.github/ISSUE_TEMPLATE/` exists, follow the closest template
+    - Always review templates under `.github/ISSUE_TEMPLATE/`
+    - Bug/defect: prefer `bug_report.md`
+    - Feature/proposal/other: prefer `issue_template.md`
+    - If adding fields not in templates, keep changes minimal and explain why
 3. **Investigate current implementation**
-    - Search related files and existing behavior
-    - Identify likely cause (for bugs) or impact/approach (for proposals)
-    - Check for duplicate implementation (same feature, function, endpoint)
+    - Inspect related files and current behavior
+    - For bugs, identify likely causes; for proposals, identify impact and approach
+    - Check for duplicate implementation (same feature, function, or endpoint)
 4. **Plan fix or approach**
-    - Define concrete resolution policy
-    - List implementation tasks and done criteria
+    - Define a concrete fix/implementation policy
+    - List implementation tasks and clear done criteria
 5. **Draft issue**
-    - **Bug template**
-      - 概要
-      - 再現手順
-      - 修正しないとどう困るか
-      - 原因と思われる部分
-      - 修正案 / 理想と思われる状況
-      - 備考
-    - **Proposal template**
-      - 概要/背景
-      - 対応方針
-      - 完了条件
-      - 備考
+    - **Bug template (`bug_report.md`)**
+      - Overview
+      - Reproduction steps
+      - Impact if not fixed
+      - Suspected cause
+      - Fix proposal / ideal behavior
+      - Notes / concerns
+    - **Standard template (`issue_template.md`)**
+      - Overview / background (required)
+      - Approach
+      - Done criteria
+      - Notes / concerns
 6. **User review**
-    - Show title/body draft to user
-    - Reflect requested edits, then wait for explicit Go sign
+    - Share the issue title/body draft with the user
+    - Reflect requested edits, then wait for explicit approval
 7. **Create issue**
-    - Use `gh issue create` after approval
-    - Preserve line breaks safely (HEREDOC or file-based body)
+    - Run `gh issue create` only after approval
+    - Preserve line breaks safely via HEREDOC or file-based body
     - Return the created Issue URL from command output
 
 ## Command Example
 
-`--body`にヒアドキュメントで本文を渡す方法と、`--body-file`でファイルを渡す方法があります。
+You can pass content using a HEREDOC with `--body`, or use `--body-file`.
 
-### ヒアドキュメントを使う場合
+### Using HEREDOC
 ```bash
-gh issue create --title "タイトル" --body "$(cat <<<'EOF'
-本文
+gh issue create --title "Title" --body "$(cat <<'EOF'
+Body
 EOF
 )"
+```
+
+### Using a body file
+```bash
+gh issue create --title "Title" --body-file ./issue-body.md
+```
