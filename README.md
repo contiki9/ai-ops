@@ -32,12 +32,67 @@ Antigravity のチャット内で `/slash-command` として利用可能にな�
 ### Claude Code
 Claude Code のコマンドやコンテキストとして利用するために、`.claude/commands/` や `CLAUDE.md` へ適用します。
 
-## コマンド一覧（一部）
-- `code-quality/` : `lint-fix.md`, `refactor-code.md`, `deslop.md` など
-- `documentation/` : `generate-api-docs.md`, `onboard-new-developer.md` など
-- `git/` : `code-review.md`, `create-pr.md`, `git-commit.md`, `git-commit-detailed.md` など
-- `testing/` : `run-all-tests-and-fix.md`, `debug-issue.md` など
-- `security/` : `security-audit.md` など
+## コマンド一覧
+`commands/` 配下に格納されている全てのコマンド一覧です。カテゴリごとに整理しています。
+
+### コード品質 (Code Quality)
+| コマンド名（ファイル名） | 説明 |
+| :--- | :--- |
+| `deslop.md` | コードの無駄を省きクリーンアップする |
+| `fix-compile-errors.md` | コンパイルエラーを修正する |
+| `lint-fix.md` | リンターのエラーを修正する |
+| `lint-suite.md` | リンターの設定と実行を行う |
+| `optimize-performance.md` | コードのパフォーマンスを最適化する |
+| `refactor-code.md` | コードのリファクタリングを実施する |
+
+### Git・プルリクエスト (Git & Pull Request)
+| コマンド名（ファイル名） | 説明 |
+| :--- | :--- |
+| `address-github-pr-comments.md` | PRのレビューコメントに対応する |
+| `code-review.md` | コードレビューを実施する |
+| `create-pr.md` | プルリクエストを作成する |
+| `fix-git-issues.md` | Gitのコンフリクトや問題を解決する |
+| `generate-pr-description.md` | PRの説明文を自動生成する |
+| `git-commit-detailed.md` | コミットメッセージ詳細版を作成するワークフロー |
+| `git-commit.md` | コミットを作成する |
+| `git-push.md` | 変更をリモートへプッシュする |
+| `light-review-existing-diffs.md` | 既存の差分を軽くレビューする |
+
+### テスト・デバッグ (Testing & Debugging)
+| コマンド名（ファイル名） | 説明 |
+| :--- | :--- |
+| `add-error-handling.md` | エラーハンドリングを追加する |
+| `debug-issue.md` | バグや問題をデバッグする |
+| `docker-logs.md` | Dockerのログを確認・分析する |
+| `run-all-tests-and-fix.md` | 全テストを実行し、エラー箇所を修正する |
+| `write-unit-tests.md` | 単体テストを作成する |
+
+### ドキュメント・設計 (Documentation & Architecture)
+| コマンド名（ファイル名） | 説明 |
+| :--- | :--- |
+| `add-documentation.md` | ドキュメントを追加・更新する |
+| `diagrams.md` | アーキテクチャやフローの図解を作成する |
+| `generate-api-docs.md` | APIドキュメントを生成する |
+| `overview.md` | プロジェクトの全体概要を記述する |
+| `visualize.md` | データやフローの可視化を行う |
+
+### セキュリティ・アクセシビリティ (Security & Accessibility)
+| コマンド名（ファイル名） | 説明 |
+| :--- | :--- |
+| `accessibility-audit.md` | アクセシビリティの監査を実施する |
+| `security-audit.md` | セキュリティ監査を実施する |
+| `security-review.md` | コードのセキュリティレビューを実施する |
+
+### 開発・プロジェクト管理 (Development & Project Management)
+| コマンド名（ファイル名） | 説明 |
+| :--- | :--- |
+| `clarify-task.md` | タスクの内容を明確化・整理する |
+| `create-issue.md` | GitHub Issueを作成する |
+| `database-migration.md` | データベースのマイグレーションを実行する |
+| `handover.md` | 現在のセッション状態を引き継ぎ書（HANDOVER.md）として出力します |
+| `onboard-new-developer.md` | 新規参画者向けのオンボーディングガイドを作成する |
+| `roadmap.md` | 開発ロードマップを作成・更新する |
+| `setup-new-feature.md` | 新機能実装に向けた要件や準備をまとめる |
 
 ## ライセンスについて
 本リポジトリの元となるコマンド群は、`hamzafer/cursor-commands` のコードをベースとして取り込み、独自の再編を行ったものです。オリジナルコードのライセンスおよび帰属については `THIRD_PARTY_LICENSES.md` を参照してください。
