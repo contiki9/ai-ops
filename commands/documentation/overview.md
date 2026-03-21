@@ -1,3 +1,6 @@
+---
+description: プロジェクトの全体概要を記述する
+---
 # Overview: Visual Architecture Diagram
 
 Generate two Mermaid diagrams to overview the product. Track progress with todos.

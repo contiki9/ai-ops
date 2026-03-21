@@ -1,3 +1,6 @@
+---
+description: 開発ロードマップを作成・更新する
+---
 # Roadmap: Feature & Improvement Suggestions
 
 Analyze the codebase and generate a visual roadmap of potential features and improvements. Track progress with todos.

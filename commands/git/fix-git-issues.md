@@ -1,3 +1,6 @@
+---
+description: Gitのコンフリクトや問題を解決する
+---
 # Fix Git Issues
 
 ## Overview

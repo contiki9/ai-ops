@@ -1,3 +1,6 @@
+---
+description: 新規参画者向けのオンボーディングガイドを作成する
+---
 # Onboard New Developer
 
 ## Overview

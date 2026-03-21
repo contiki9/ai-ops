@@ -1,3 +1,6 @@
+---
+description: タスクの内容を明確化・整理する
+---
 # Clarify Task
 
 Before doing ANY coding work on the task I describe:

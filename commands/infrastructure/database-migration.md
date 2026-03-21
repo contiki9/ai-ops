@@ -1,3 +1,6 @@
+---
+description: データベースのマイグレーションを実行する
+---
 # Database Migration
 
 ## Overview

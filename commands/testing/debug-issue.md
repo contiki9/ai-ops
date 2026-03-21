@@ -1,3 +1,6 @@
+---
+description: バグや問題をデバッグする
+---
 # Debug Issue
 
 ## Overview

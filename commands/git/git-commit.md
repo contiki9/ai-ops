@@ -1,3 +1,6 @@
+---
+description: コミットを作成する
+---
 # Git Create Commit
 
 ## Overview

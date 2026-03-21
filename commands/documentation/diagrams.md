@@ -1,3 +1,6 @@
+---
+description: アーキテクチャやフローの図解を作成する
+---
 # Generate Mermaid Diagram
 
 ## Overview

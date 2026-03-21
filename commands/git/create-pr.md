@@ -1,3 +1,6 @@
+---
+description: プルリクエストを作成する
+---
 # Create PR
 
 ## Overview

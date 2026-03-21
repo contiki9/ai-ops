@@ -1,3 +1,6 @@
+---
+description: リンターの設定と実行を行う
+---
 # Fix Lint Issues
 
 ## Overview

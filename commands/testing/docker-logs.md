@@ -1,3 +1,6 @@
+---
+description: Dockerのログを確認・分析する
+---
 # Docker Logs Tail
 
 Tail logs from Docker containers to check for errors and monitor application behavior.

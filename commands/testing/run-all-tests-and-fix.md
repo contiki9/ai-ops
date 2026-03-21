@@ -1,3 +1,6 @@
+---
+description: 全テストを実行し、エラー箇所を修正する
+---
 # Run All Tests and Fix Failures
 
 ## Overview

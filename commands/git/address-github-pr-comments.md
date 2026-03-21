@@ -1,3 +1,6 @@
+---
+description: PRのレビューコメントに対応する
+---
 # Address GitHub PR Comments
 
 ## Overview

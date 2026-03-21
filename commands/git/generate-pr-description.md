@@ -1,3 +1,6 @@
+---
+description: PRの説明文を自動生成する
+---
 # Generate PR Description
 
 ## Overview

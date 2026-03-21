@@ -1,3 +1,6 @@
+---
+description: コードの無駄を省きクリーンアップする
+---
 # Remove AI code slop
 
 Check the diff against main, and remove all AI generated slop introduced in this branch.

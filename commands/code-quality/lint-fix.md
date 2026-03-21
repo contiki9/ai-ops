@@ -1,3 +1,6 @@
+---
+description: リンターのエラーを修正する
+---
 # Lint and Fix Code
 
 ## Overview

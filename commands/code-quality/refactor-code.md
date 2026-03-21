@@ -1,3 +1,6 @@
+---
+description: コードのリファクタリングを実施する
+---
 # Refactor Code
 
 ## Overview

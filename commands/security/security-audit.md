@@ -1,3 +1,6 @@
+---
+description: セキュリティ監査を実施する
+---
 # Security Audit
 
 ## Overview

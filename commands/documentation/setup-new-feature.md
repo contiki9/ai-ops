@@ -1,3 +1,6 @@
+---
+description: 新機能実装に向けた要件や準備をまとめる
+---
 # Setup New Feature
 
 ## Overview

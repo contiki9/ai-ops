@@ -1,3 +1,6 @@
+---
+description: 変更をリモートへプッシュする
+---
 # Git Push (sync with origin)
 
 ## Overview
