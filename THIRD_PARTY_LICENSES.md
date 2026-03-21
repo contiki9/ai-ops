@@ -1,8 +1,42 @@
 # Third Party Licenses
 
-このリポジトリ（`ai-ops`）に含まれるコマンドの多くは、元々 `hamzafer/cursor-commands` からフォークされ、その後汎用的な AI ツール向けにディレクトリ再編や記述の調整が行われたものです。
+このリポジトリ（`ai-ops`）に含まれるサードパーティ製のコマンド群は、元々 `hamzafer/cursor-commands` のコードをベースとして取り込み、その後汎用的な AI ツール向けにディレクトリ再編や記述の調整を行ったものです。
 
-元のコマンドファイル（`commands/` 以下の Markdown ファイル）は、以下の MIT License で Hamza によって提供されたものに基づいています。
+以下のコマンドファイル群は、MIT License で Hamza によって提供されたものに基づいています。これらに含まれない新設のコマンド等についてはオリジナルとなります。
+
+### 対象ファイル一覧（計32ファイル）
+- `commands/code-quality/add-error-handling.md`
+- `commands/code-quality/clarify-task.md`
+- `commands/code-quality/deslop.md`
+- `commands/code-quality/lint-fix.md`
+- `commands/code-quality/lint-suite.md`
+- `commands/code-quality/optimize-performance.md`
+- `commands/code-quality/refactor-code.md`
+- `commands/documentation/add-documentation.md`
+- `commands/documentation/diagrams.md`
+- `commands/documentation/generate-api-docs.md`
+- `commands/documentation/onboard-new-developer.md`
+- `commands/documentation/overview.md`
+- `commands/documentation/roadmap.md`
+- `commands/documentation/setup-new-feature.md`
+- `commands/documentation/visualize.md`
+- `commands/git/address-github-pr-comments.md`
+- `commands/git/code-review.md`
+- `commands/git/create-pr.md`
+- `commands/git/fix-git-issues.md`
+- `commands/git/generate-pr-description.md`
+- `commands/git/git-commit.md`
+- `commands/git/git-push.md`
+- `commands/git/light-review-existing-diffs.md`
+- `commands/infrastructure/database-migration.md`
+- `commands/security/accessibility-audit.md`
+- `commands/security/security-audit.md`
+- `commands/security/security-review.md`
+- `commands/testing/debug-issue.md`
+- `commands/testing/docker-logs.md`
+- `commands/testing/fix-compile-errors.md`
+- `commands/testing/run-all-tests-and-fix.md`
+- `commands/testing/write-unit-tests.md`
 
 ---
 

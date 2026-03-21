@@ -40,6 +40,6 @@ Claude Code のコマンドやコンテキストとして利用するために�
 - `security/` : `security-audit.md` など
 
 ## ライセンスについて
-本リポジトリの元となるコマンド群は `hamzafer/cursor-commands` からフォークされ、再編されました。オリジナルコードのライセンスおよび帰属については `THIRD_PARTY_LICENSES.md` を参照してください。
+本リポジトリの元となるコマンド群は、`hamzafer/cursor-commands` のコードをベースとして取り込み、独自の再編を行ったものです。オリジナルコードのライセンスおよび帰属については `THIRD_PARTY_LICENSES.md` を参照してください。
 
 このリポジトリ全体の運用については `LICENSE` (MIT License - Copyright 2026 contiki9) に従います。
