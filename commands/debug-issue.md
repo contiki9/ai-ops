@@ -1,41 +1,42 @@
 ---
 description: バグや問題をデバッグする
 ---
-# Debug Issue
+# 問題のデバッグ（Debug Issue）
 
-## Overview
+## 概要（Overview）
 
-Help debug the current issue in the code by walking through the debugging process systematically and providing clear, actionable solutions.
+コード上の問題を、手順立てて追い、実行可能な解決策まで導く。
 
-## Steps
+**成果物について**: 調査メモ、再現手順、ユーザーへの説明や提案は、特に指示がない限り**日本語**で書く。ログに出す英語メッセージやコードはプロジェクトに合わせる。
 
-1. **Problem Analysis**
-    - Identify the specific problem or error
-    - Understand the expected vs actual behavior
-    - Trace the execution flow to find the root cause
-2. **Debugging Strategy**
-    - Add appropriate logging statements
-    - Suggest debugging tools and techniques
-    - Identify key variables and states to monitor
-    - Recommend breakpoint locations
-3. **Solution Approach**
-    - Propose potential fixes with explanations
-    - Consider multiple solution approaches
-    - Evaluate trade-offs of different approaches
-    - Provide step-by-step resolution plan
-4. **Prevention**
-    - Suggest ways to prevent similar issues
-    - Recommend additional tests or checks
-    - Identify code patterns that could be improved
+## 手順（Steps）
 
-## Debug Issue Checklist
+1. **問題の分析（Problem Analysis）**
+    - 具体的な不具合やエラーを特定する
+    - 期待する挙動と実際の挙動の差を把握する
+    - 実行の流れをたどり、根本原因の当たりを付ける
+2. **デバッグ方針（Debugging Strategy）**
+    - 適切なログ出力を追加する
+    - 使えるデバッグ手法・ツールを提案する
+    - 監視すべき変数や状態を特定する
+    - ブレークポイントを置く候補を示す
+3. **解決のアプローチ（Solution Approach）**
+    - 修正案を複数示し、それぞれ理由を書く
+    - 複数案のトレードオフを比較する
+    - 段階的な解消手順を提示する
+4. **再発防止（Prevention）**
+    - 同種の不具合を防ぐ方法を提案する
+    - 追加のテストやチェックを勧める
+    - 改善余地のあるコードパターンを指摘する
 
-- [ ] Identified the specific problem or error
-- [ ] Understood expected vs actual behavior
-- [ ] Traced execution flow to find root cause
-- [ ] Added appropriate logging statements
-- [ ] Proposed potential fixes with explanations
-- [ ] Evaluated trade-offs of different approaches
-- [ ] Provided step-by-step resolution plan
-- [ ] Suggested ways to prevent similar issues
-- [ ] Recommended additional tests or checks
+## デバッグ チェックリスト
+
+- [ ] 具体的な問題やエラーを特定した
+- [ ] 期待値と実際の挙動の差を理解した
+- [ ] 実行フローを追い、原因を絞り込んだ
+- [ ] 適切なログを追加した、または追加案を出した
+- [ ] 修正案を複数、説明付きで提案した
+- [ ] 案ごとのトレードオフを比較した
+- [ ] 段階的な解消プランを示した
+- [ ] 再発防止の考え方を述べた
+- [ ] 追加テストやチェックを勧めた

@@ -1,41 +1,43 @@
 ---
 description: PRの説明文を自動生成する
 ---
-# Generate PR Description
+# PR 説明文の生成（Generate PR Description）
 
-## Overview
+## 概要（Overview）
 
-Create a comprehensive pull request description based on the changes in this branch and format it as proper markdown for use in a GitHub PR description.
+ブランチ上の変更内容に基づき、GitHub のプルリクエスト説明用として使える Markdown を作成する。
 
-## Steps
+**成果物について**: ユーザーがそのまま PR に貼る説明文は、特に指示がない限り**日本語**で書く。コマンド名・CLI の表記は英語のままでよい。
 
-1. **Summary**
-    - Provide a clear, concise summary of what this PR accomplishes
-2. **Changes Made**
-    - List the key changes made in this PR
-    - Include both code and non-code changes
-    - Highlight any breaking changes
-3. **Testing**
-    - Describe how the changes were tested
-    - Include any new test cases added
-    - Note any manual testing performed
-4. **Related Issues**
-    - Link to any related issues or tickets
-    - Use closing keywords if this PR resolves issues
-5. **Additional Notes**
-    - Any deployment considerations
-    - Follow-up work required
-    - Notes for reviewers
+## 手順（Steps）
 
-## Generate PR Description Checklist
+1. **要約（Summary）**
+    - この PR で達成することを簡潔にまとめる
+2. **変更内容（Changes Made）**
+    - 本 PR で行った主な変更を列挙する
+    - コード以外の変更も含める
+    - 破壊的変更があれば明示する
+3. **テスト（Testing）**
+    - どのように検証したかを書く
+    - 追加したテストケースがあれば記載する
+    - 手動で行った確認があれば記載する
+4. **関連 Issue（Related Issues）**
+    - 関連する Issue やチケットへのリンクを付ける
+    - この PR で解決する場合はクローズ用のキーワードを使う
+5. **補足（Additional Notes）**
+    - デプロイ時の注意点
+    - フォローアップで必要な作業
+    - レビュアー向けのメモ
 
-- [ ] Provided clear, concise summary of what this PR accomplishes
-- [ ] Listed all key changes made in this PR
-- [ ] Highlighted any breaking changes
-- [ ] Described how the changes were tested
-- [ ] Included any new test cases added
-- [ ] Noted any manual testing performed
-- [ ] Linked to any related issues or tickets
-- [ ] Included any deployment considerations
-- [ ] Noted any follow-up work required
-- [ ] Formatted as proper markdown for GitHub PR
+## PR 説明文 チェックリスト
+
+- [ ] この PR の目的が簡潔に書かれている
+- [ ] 主な変更がすべて列挙されている
+- [ ] 破壊的変更があれば強調されている
+- [ ] テスト・検証の内容が書かれている
+- [ ] 新規テストがあれば記載されている
+- [ ] 手動確認があれば記載されている
+- [ ] 関連 Issue やチケットへのリンクがある
+- [ ] デプロイ上の考慮事項が書かれている（該当する場合）
+- [ ] フォローアップがあれば記載されている
+- [ ] GitHub 用の Markdown として体裁が整っている

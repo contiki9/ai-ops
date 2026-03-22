@@ -1,36 +1,37 @@
 ---
 description: PRのレビューコメントに対応する
 ---
-# Address GitHub PR Comments
+# GitHub PR コメントへの対応（Address GitHub PR Comments）
 
-## Overview
+## 概要（Overview）
 
-Process outstanding reviewer feedback, apply required fixes, and draft clear
-responses for each GitHub pull-request comment.
+未対応のレビュー指摘を処理し、必要な修正を入れたうえで、各スレッドに返す**返信文の案**を用意する。
 
-## Steps
+**成果物について**: レビュアーに見せる**返信コメント**は、特に指示がない限り**日本語**で書く。コミットハッシュやファイルパスなど、ツールが要求する表記は英語のままでよい。
 
-1. **Sync and audit comments**
-    - Pull the latest branch changes
-    - Open the PR conversation view and read every unresolved comment
-    - Group comments by affected files or themes
-2. **Plan resolutions**
-    - List the requested code edits for each thread
-    - Identify clarifications or additional context you must provide
-    - Note any dependencies or blockers before implementing changes
-3. **Implement fixes**
-    - Apply targeted updates addressing one comment thread at a time
-    - Run relevant tests or linters after impactful changes
-    - Stage changes with commits that reference the addressed feedback
-4. **Draft responses**
-    - Summarize the action taken or reasoning provided for each comment
-    - Link to commits or lines when clarification helps reviewers verify
-    - Highlight any remaining questions or follow-up needs
+## 手順（Steps）
 
-## Response Checklist
+1. **同期とコメントの洗い出し（Sync and audit comments）**
+    - ブランチの最新変更を取り込む
+    - PR の会話を開き、未解決のコメントをすべて読む
+    - 影響ファイルやテーマごとにコメントをグループ化する
+2. **対応方針の整理（Plan resolutions）**
+    - スレッドごとに求められているコード変更を列挙する
+    - 補足説明や追加コンテキストが必要なものを特定する
+    - 実装前に依存関係やブロッカーがないかメモする
+3. **修正の実装（Implement fixes）**
+    - スレッド単位で、指摘に沿った変更を入れる
+    - 影響の大きい変更のあとは関連テストやリンターを実行する
+    - 対応した内容が分かるようにコミットする
+4. **返信ドラフト（Draft responses）**
+    - コメントごとに、実施した対応または判断理由を要約する
+    - レビュアーが確認しやすいようコミットや行へのリンクを付ける
+    - 残課題やフォローアップがあれば明示する
 
-- [ ] All reviewer comments acknowledged
-- [ ] Required code changes implemented and tested
-- [ ] Clarifying explanations prepared for nuanced threads
-- [ ] Follow-up items documented or escalated
-- [ ] PR status updated for reviewers
+## 返信 チェックリスト
+
+- [ ] すべてのレビューコメントに言及した
+- [ ] 必要なコード変更を実装し、テストした
+- [ ] 微妙な議論には説明文を用意した
+- [ ] フォローアップは記録したかエスカレーションした
+- [ ] レビュアー向けに PR の状態を更新した
