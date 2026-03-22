@@ -44,7 +44,7 @@ description: GitHub Issueを作成する
     - 修正依頼を反映し、明示的な承認があるまで待つ
 7. **Issue 作成（Create issue）**
     - 承認後にのみ `gh issue create` を実行する
-    - 改行を安全に保つため HEREDOC やファイル経由で body を渡す
+    - 改行を安全に保つため HEREDOC やファイル経由で body を渡す。本文ファイルをリポジトリ内に置く場合は **`.tmp/` 以下**に置く（`commands/github-cli-notes.md` 参照）
     - コマンド出力から作成された Issue の URL を返す
 
 ## コマンド例（Command Example）
@@ -61,7 +61,7 @@ EOF
 
 ### 本文ファイルを使う場合
 ```bash
-gh issue create --title "Title" --body-file ./issue-body.md
+gh issue create --title "Title" --body-file .tmp/issue-body.md
 ```
 
 ## GitHub CLI: Issue の閲覧（トラブルシュート）
@@ -74,4 +74,4 @@ gh issue view <N> --json title,body,state,labels,url
 gh issue view <N> --repo owner/repo --json title,body,state,labels,url
 ```
 
-非公開リポジトリでは、認証なしの HTTP フェッチが 404 になることがあるため、**認証済みの `gh`** または `gh api` を使ってください。`gh pr view` / `gh pr edit`、本文の安全な編集（`--body-file` とワーキングツリー外の一時ファイル）、PR コメントの REST 取得など、共通の注意事項は `commands/github-cli-notes.md` にまとめています。
+非公開リポジトリでは、認証なしの HTTP フェッチが 404 になることがあるため、**認証済みの `gh`** または `gh api` を使ってください。`gh pr view` / `gh pr edit`、本文の安全な編集（`--body-file` と **`.tmp/` 以下**または OS の `/tmp/` など）、PR コメントの REST 取得など、共通の注意事項は `commands/github-cli-notes.md` にまとめています。
