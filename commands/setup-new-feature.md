@@ -1,31 +1,33 @@
 ---
 description: 新機能実装に向けた要件や準備をまとめる
 ---
-# Setup New Feature
+# 新機能のセットアップ（Setup New Feature）
 
-## Overview
+## 概要（Overview）
 
-Systematically set up a new feature from initial planning through to implementation structure.
+初期の計画から実装のたたき台まで、新機能を段階的に準備する。
 
-## Steps
+**成果物について**: 要件メモ、ユーザーストーリー、受け入れ基準など、チームやユーザーが読む文章は、特に指示がない限り**日本語**で書く。ブランチ名や CLI はプロジェクトの慣習に従う。
 
-1. **Define requirements**
-    - Clarify feature scope and goals
-    - Identify user stories and acceptance criteria
-    - Plan technical approach
-2. **Create feature branch**
-    - Branch from main/develop
-    - Set up local development environment
-    - Configure any new dependencies
-3. **Plan architecture**
-    - Design data models and APIs
-    - Plan UI components and flow
-    - Consider testing strategy
+## 手順（Steps）
 
-## Setup New Feature Checklist
+1. **要件の整理（Define requirements）**
+    - 機能の範囲と目的を明確にする
+    - ユーザーストーリーと受け入れ基準を書く
+    - 技術的な進め方を検討する
+2. **フィーチャーブランチの作成（Create feature branch）**
+    - `main` または `develop` からブランチを切る
+    - ローカル開発環境を整える
+    - 新しい依存関係があれば設定する
+3. **アーキテクチャの検討（Plan architecture）**
+    - データモデルと API を設計する
+    - UI コンポーネントと画面の流れを計画する
+    - テスト方針を考える
 
-- [ ] Requirements documented
-- [ ] User stories written
-- [ ] Technical approach planned
-- [ ] Feature branch created
-- [ ] Development environment ready
+## セットアップ チェックリスト
+
+- [ ] 要件を文書化した
+- [ ] ユーザーストーリーを書いた
+- [ ] 技術的な進め方を決めた
+- [ ] フィーチャーブランチを作成した
+- [ ] 開発環境の準備ができた

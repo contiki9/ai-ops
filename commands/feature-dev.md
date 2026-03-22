@@ -1,72 +1,74 @@
 ---
 description: 新機能・新規要望向けの構造化開発ワークフロー（発見から実装・レビューまで）
 ---
-# Feature Dev
+# 機能開発ワークフロー（Feature Dev）
 
-## Overview
+## 概要（Overview）
 
-Guide feature and new-requirement work in a structured, multi-phase workflow: understand the ask, explore the codebase, remove ambiguity, compare architecture options, implement only after explicit approval, review quality, and summarize outcomes.
+新機能や新規要件を、複数フェーズに分けて進める。依頼の理解、コードベース探索、曖昧さの解消、アーキテクチャ比較、**明示的な承認後の実装**、品質レビュー、成果のまとめまでをガイドする。
 
-Inspired by systematic feature-development workflows; adapted to be **tool-agnostic** (use search, reading, and todos instead of vendor-specific agents).
+体系的な機能開発フローに着想を得つつ、**特定ツールに依存しない**（検索・ファイル読み取り・TODO など汎用手段でよい）形にしている。
 
-**Use for:**
+**成果物について**: ユーザーへの説明、設計案、サマリー、GitHub に載せる文章は、特に指示がない限り**日本語**で書く。
 
-- New features that span multiple files or layers
-- Requirements that need architectural or integration decisions
-- Work where ambiguity (edge cases, errors, compatibility) must be resolved before design
+**向いている用途**
 
-**Do not use for:**
+- 複数ファイルやレイヤーにまたがる新機能
+- アーキテクチャや連携の判断が必要な要件
+- エッジケース・エラー・互換性など、設計前に曖昧さを潰したい作業
 
-- One-line fixes, trivial changes, or urgent hotfixes
-- Fully specified, very small tasks
+**向いていない用途**
 
-For lightweight branch and setup steps, see `setup-new-feature.md`. For clarification-only passes, use `clarify-task.md` (e.g. in Phase 3).
+- 1 行修正や些末な変更、緊急ホットフィックス
+- すでに細かく決まっている極小タスク
 
-## Steps
+ブランチ作成など軽い準備は `setup-new-feature.md`。曖昧さの整理だけなら Phase 3 相当として `clarify-task.md` を使う。
 
-1. **Discovery**
-    - Restate the feature or request; identify the problem being solved
-    - Capture constraints, non-goals, and acceptance criteria at a high level
-    - Summarize your understanding and confirm with the user before exploring deeply
+## 手順（Steps）
 
-2. **Codebase exploration**
-    - Search and read code for similar features, patterns, and integration points
-    - Map relevant architecture (layers, modules, data flow, entry points)
-    - List candidate files and extension points; note risks of duplicating existing behavior
-    - Present a concise findings summary (key paths, patterns, recommended touch points)
+1. **発見（Discovery）**
+    - 機能や依頼を言い換え、解こうとしている問題を明確にする
+    - 制約・非ゴール・受け入れ基準を大まかに押さえる
+    - 理解の要約をユーザーに示し、深掘り前に認識を合わせる
 
-3. **Clarifying questions**
-    - From findings and the request, list underspecified areas: edge cases, error handling, integrations, backward compatibility, performance, security, and UX expectations where relevant
-    - Organize questions clearly; **wait for user answers before proceeding** to architecture design
-    - When helpful, follow the multiple-choice style in `clarify-task.md` to speed alignment
+2. **コードベース探索（Codebase exploration）**
+    - 類似機能、パターン、接続点を検索・読解する
+    - レイヤー、モジュール、データの流れ、エントリポイントなど構成を整理する
+    - 触りそうなファイルと拡張ポイントを列挙し、既存挙動の重複リスクに注意する
+    - 調査結果を短くまとめる（主要パス、パターン、推奨タッチポイント）
 
-4. **Architecture design**
-    - Propose **at least two or three** approaches (e.g. minimal change, cleaner separation, pragmatic balance)
-    - For each: scope, main components, trade-offs, and fit with existing patterns
-    - Give a recommendation with rationale; **wait for the user to choose** (or approve a variant) before implementation
+3. **確認質問（Clarifying questions）**
+    - 調査結果と依頼から、仕様が足りない点を列挙する（エッジケース、エラー処理、連携、後方互換、パフォーマンス、セキュリティ、UX など、該当する範囲で）
+    - 質問を整理し、**回答があるまで**アーキテクチャ設計に進まない
+    - 必要なら `clarify-task.md` の選択肢形式で合意を早める
 
-5. **Implementation**
-    - **Start only after explicit user approval** of the chosen approach
-    - Re-read relevant files; implement following project conventions and prior exploration
-    - Avoid scope creep and unrelated refactors; track progress with todos where appropriate
-    - Respect project rules (e.g. no unapproved UI/UX changes, no unapproved dependency/version bumps)
+4. **アーキテクチャ設計（Architecture design）**
+    - **少なくとも 2〜3 案**を出す（例: 最小変更、責務分離、バランス型）
+    - 各案について範囲、主な構成要素、トレードオフ、既存パターンとの整合を書く
+    - 推奨案と理由を示し、**ユーザーが選ぶか承認するまで**実装に入らない
 
-6. **Quality review**
-    - Review from multiple angles in parallel (as separate passes): simplicity/DRY, correctness/bugs, conventions/abstractions
-    - Report issues with severity; cite file and line references where possible
-    - **Ask the user** whether to fix now, defer, or proceed as-is; act on their choice
+5. **実装（Implementation）**
+    - **選択したアプローチについてユーザーが明示的に承認した後**に着手する
+    - 関連ファイルを再読し、プロジェクトの慣習と調査結果に沿って実装する
+    - スコープ外のリファクタや機能追加を避け、必要なら TODO で進捗を管理する
+    - プロジェクトルールを守る（例: 未承認の UI/UX 変更や依存バージョンの勝手な更新はしない）
 
-7. **Summary**
-    - Describe what was built, key decisions, and files touched
-    - Suggest next steps (tests, docs, rollout, follow-up features)
+6. **品質レビュー（Quality review）**
+    - シンプルさ・DRY、正しさ・バグ、規約・抽象化など、観点を分けて（別パスで）レビューする
+    - 問題の重要度を付け、可能ならファイル・行を引用する
+    - **ユーザーに**今直すか、後回しか、このまま進むかを確認し、その判断に従う
 
-## Feature Dev Checklist
+7. **まとめ（Summary）**
+    - 何を作ったか、主要な判断、触ったファイルを述べる
+    - 次のステップ（テスト、ドキュメント、リリース、フォロー機能）を提案する
 
-- [ ] Restated the request and confirmed understanding (Discovery)
-- [ ] Explored the codebase and summarized findings (Exploration)
-- [ ] Asked clarifying questions and **received answers** before design (Clarification)
-- [ ] Presented multiple architecture options and trade-offs (Architecture Design)
-- [ ] **User selected or approved** an approach before coding (Architecture Approval)
-- [ ] Implemented only in-scope changes per approved design (Implementation)
-- [ ] Ran a structured quality review and **user decided** on fixes (Quality Review)
-- [ ] Delivered a final summary with decisions and suggested next steps (Summary)
+## 機能開発 チェックリスト
+
+- [ ] 依頼を言い換え、理解を確認した（発見）
+- [ ] コードベースを調査し、結果を要約した（探索）
+- [ ] 確認質問を出し、設計前に**回答を得た**（確認）
+- [ ] 複数のアーキテクチャ案とトレードオフを示した（設計）
+- [ ] 実装前にユーザーが案を**選んだまたは承認した**（設計の承認）
+- [ ] 承認された設計の範囲内だけ変更した（実装）
+- [ ] 構造化した品質レビューを行い、修正の可否を**ユーザーが決めた**（品質レビュー）
+- [ ] 最終サマリーと次の一手を提示した（まとめ）

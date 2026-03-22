@@ -1,50 +1,50 @@
 ---
 description: プルリクエストの詳細を最新のものに更新する
 ---
-# Generate PR Description
+# PR 説明文の生成（Generate PR Description）
 
-## Overview
+## 概要（Overview）
 
-Compare the current pull request (PR) description with the actual commits and code diffs to generate an updated description.
-This workflow focuses on filling in missing implementation details, correcting inconsistencies, and supplementing missing test or impact information to ensure a smooth review process.
+現在のプルリクエスト（PR）の説明文と、実際のコミット・コード差分を突き合わせ、**更新版の説明文**を Markdown で提案する。実装の記載漏れ、本文と実装の食い違い、テストや影響範囲の不足を補い、レビューが進めやすい状態に近づける。
 
-## Operational Prerequisites
+**成果物について**: ユーザーがそのまま PR に貼る説明文は、特に指示がない限り**日本語**で書く。コマンド名・CLI の表記は英語のままでよい。
 
-- The existing PR description must be accessible (e.g., via `gh pr view`).
-- The current branch must reflect the latest code changes or commit history.
-- The output of this command is a "proposal"; always review the content before applying it to the PR.
+## 運用上の前提（Operational Prerequisites）
 
-## Reference Template
+- 既存の PR 説明文にアクセスできること（例: `gh pr view`）。
+- 対象ブランチが最新のコード変更・コミット履歴を反映していること。
+- 本コマンドの出力は「提案」であり、PR に反映する前に必ず内容を確認すること。
 
-- Use the project's PR template as the base for the output: `.github/PULL_REQUEST_TEMPLATE.md`
+## 参照テンプレート（Reference Template）
 
-## Steps
+- 出力の骨格はプロジェクトの PR テンプレートに合わせる: `.github/PULL_REQUEST_TEMPLATE.md`
 
-1. **Information Gathering**
-    - Retrieve the current PR body (Description).
-    - Review all commit messages on the target branch and the diff against the base branch (e.g., `main`).
-2. **Analysis and Extraction**
-    - Compare the implementation with the PR description and extract items for update based on:
-        - **Omissions**: Implemented features or changes not mentioned in the PR body.
-        - **Inconsistencies**: Descriptions in the PR body that do not match the actual code changes or are outdated.
-        - **Missing Details**: Lack of testing results, impact areas, operational requirements, or supplemental info (e.g., screenshots).
-3. **Generate Update Proposal**
-    - Create an updated PR body in Japanese while maintaining the structure of the template specified in "Reference Template".
-    - Organize by sections as needed to make changes clear.
-4. **Final Review**
-    - Verify that the generated content does not contain excessive summarization or misinterpretations.
-    - Output in a format that can be directly pasted into the PR body.
+## 手順（Steps）
 
-## Checkpoints
+1. **情報の収集（Information Gathering）**
+    - 現在の PR 本文（Description）を取得する。
+    - 対象ブランチ上のコミットメッセージと、ベースブランチ（例: `main`）との差分を確認する。
+2. **分析と抽出（Analysis and Extraction）**
+    - 実装と PR 本文を比較し、次に基づいて更新候補を抽出する。
+        - **記載漏れ**: PR 本文に書かれていないが実装済みの機能や変更。
+        - **不整合**: 本文の説明が実際のコード変更と一致しない、または古い記述。
+        - **不足**: テスト結果、影響範囲、動作要件、補足（スクリーンショットなど）の欠け。
+3. **更新案の生成（Generate Update Proposal）**
+    - 「参照テンプレート」の構成を維持したうえで、**日本語**の更新後 PR 本文を作成する。
+    - 変更点が分かるよう、必要に応じてセクション単位で整理する。
+4. **最終確認（Final Review）**
+    - 生成内容に過度な要約や誤解釈がないか確認する。
+    - PR 本文にそのまま貼れる形式で出力する。
 
-- [ ] Are all major implemented changes included in the "変更内容" (Changes) section?
-- [ ] Have old specifications that were deleted or changed been removed from the PR body?
-- [ ] Are the specific details of tests performed (unit tests, manual verification, etc.) documented?
-- [ ] Is the impact on other features (影響範囲) thoroughly considered?
-- [ ] Are environment variables or configuration changes (動作要件) clearly stated?
-- [ ] Are notes for reviewers or supplemental information up to date?
+## チェックポイント（Checkpoints）
 
-## Output Format
+- [ ] 実装した主な変更が「変更内容」にすべて含まれているか。
+- [ ] 削除・変更された仕様の古い記述を PR 本文から除けているか。
+- [ ] 実施したテスト（ユニット、手動確認など）の具体的内容が書かれているか。
+- [ ] 他機能への影響（影響範囲）を十分に考慮しているか。
+- [ ] 環境変数や設定変更（動作要件）が明確か。
+- [ ] レビュアー向けメモや補足が最新か。
 
-Follow the template structure from `.github/PULL_REQUEST_TEMPLATE.md` and output all items in Japanese.
-Ensure that the output includes all sections defined in the template (e.g., 概要/対応issue, 変更内容, テストの観点, 影響範囲, 動作要件, 補足).
+## 出力形式（Output Format）
+
+`.github/PULL_REQUEST_TEMPLATE.md` の構成に従い、各項目を**日本語**で出力する。テンプレートで定義されたセクション（例: 概要/対応issue、変更内容、テストの観点、影響範囲、動作要件、補足）をすべて含めること。

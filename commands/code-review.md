@@ -1,61 +1,59 @@
 ---
 description: コードレビューを実施する
 ---
-# Code Review
+# コードレビュー（Code Review）
 
-## Overview
+## 概要（Overview）
 
-Perform a thorough code review that verifies functionality, maintainability, and
-security before approving a change. Focus on architecture, readability,
-performance implications, and provide actionable suggestions for improvement.
+承認前に、機能・保守性・セキュリティを踏まえたレビューを行う。アーキテクチャ、読みやすさ、パフォーマンスへの影響に目を向け、改善につながる具体的な提案を書く。
 
-## Steps
+**成果物について**: 作成する**レビューコメントやサマリー**は、特に指示がない限り**日本語**で書く。コード識別子やファイルパスはプロジェクトの表記に従う。
 
-1. **Understand the change**
-    - Read the PR description and related issues for context
-    - Identify the scope of files and features impacted
-    - Note any assumptions or questions to clarify with the author
-2. **Validate functionality**
-    - Confirm the code delivers the intended behavior
-    - Exercise edge cases or guard conditions mentally or by running locally
-    - Check error handling paths and logging for clarity
-3. **Assess quality**
-    - Ensure functions are focused, names are descriptive, and code is readable
-    - Watch for duplication, dead code, or missing tests
-    - Verify documentation and comments reflect the latest changes
-4. **Review security and risk**
-    - Look for injection points, insecure defaults, or missing validation
-    - Confirm secrets or credentials are not exposed
-    - Evaluate performance or scalability impacts of the change
+## 手順（Steps）
 
-## Review Checklist
+1. **変更の理解（Understand the change）**
+    - PR 説明と関連 Issue を読み、文脈を把握する
+    - 影響範囲となるファイルと機能を特定する
+    - 著者に確認したい前提や疑問をメモする
+2. **機能の妥当性（Validate functionality）**
+    - 意図した動作を満たしているか確認する
+    - エッジケースやガード条件を頭の中で、またはローカルでたどる
+    - エラー処理やログが分かりやすいか確認する
+3. **品質の評価（Assess quality）**
+    - 関数の責務、命名、読みやすさを確認する
+    - 重複、デッドコード、テスト不足がないか見る
+    - ドキュメントやコメントが最新の変更と一致しているか確認する
+4. **セキュリティとリスク（Review security and risk）**
+    - インジェクション、不安全なデフォルト、バリデーション漏れがないか見る
+    - シークレットや認証情報の露出がないか確認する
+    - パフォーマンス・スケーラビリティへの影響を評価する
 
-### Functionality
+## レビュー チェックリスト
 
-- [ ] Intended behavior works and matches requirements
-- [ ] Edge cases handled gracefully
-- [ ] Error handling is appropriate and informative
+### 機能（Functionality）
 
-### Code Quality
+- [ ] 期待どおり動き、要件と一致している
+- [ ] エッジケースが適切に扱われている
+- [ ] エラー処理が適切で情報が足りている
 
-- [ ] Code structure is clear and maintainable
-- [ ] No unnecessary duplication or dead code
-- [ ] Tests/documentation updated as needed
+### コード品質（Code Quality）
 
-### Security & Safety
+- [ ] 構造が明確で保守しやすい
+- [ ] 不要な重複やデッドコードがない
+- [ ] 必要に応じてテスト・ドキュメントが更新されている
 
-- [ ] No obvious security vulnerabilities introduced
-- [ ] Inputs validated and outputs sanitized
-- [ ] Sensitive data handled correctly
+### セキュリティと安全性（Security & Safety）
 
-## Additional Review Notes
+- [ ] 明らかな脆弱性を増やしていない
+- [ ] 入力の検証と出力のサニタイズが適切である
+- [ ] 機微なデータの扱いが適切である
 
-- Architecture and design decisions considered
-- Performance bottlenecks or regressions assessed
-- Coding standards and best practices followed
-- Resource management, error handling, and logging reviewed
-- Suggested alternatives, additional test cases, or documentation updates
-  captured
+## 追加で見る観点（Additional Review Notes）
 
-Provide constructive feedback with concrete examples and actionable guidance for
-the author.
+- アーキテクチャと設計判断
+- ボトルネックやパフォーマンス後退
+- コーディング規約とベストプラクティス
+- リソース管理、エラー処理、ログ
+- 代替案、追加テストケース、ドキュメント更新の提案
+
+著者が次のアクションを取れるよう、具体例と実行可能な指摘を心がける。

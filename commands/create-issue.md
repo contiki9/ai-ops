@@ -1,57 +1,57 @@
 ---
 description: GitHub Issueを作成する
 ---
-# Create Issue
+# Issue の作成（Create Issue）
 
-## Overview
+## 概要（Overview）
 
-Create a clear and reproducible GitHub Issue from the user's request.
-Review related code and existing templates first, draft the issue, get user approval,
-then create it with `gh issue create`.
+ユーザーの依頼から、再現性のある GitHub Issue を作成する。関連コードと既存テンプレートを先に確認し、案を作成してユーザー承認を得てから `gh issue create` で作成する。
 
-## Steps
+**成果物について**: Issue の**タイトルと本文**は、特に指示がない限り**日本語**で書く。コマンド例や CLI のプレースホルダは英語のままでよい。
 
-1. **Confirm request**
-    - Collect the problem statement, background, and expected outcome from the user
-    - Ask follow-up questions only when required information is missing
-2. **Select issue type**
-    - Always review templates under `.github/ISSUE_TEMPLATE/`
-    - Bug/defect: prefer `bug_report.md`
-    - Feature/proposal/other: prefer `issue_template.md`
-    - If adding fields not in templates, keep changes minimal and explain why
-3. **Investigate current implementation**
-    - Inspect related files and current behavior
-    - For bugs, identify likely causes; for proposals, identify impact and approach
-    - Check for duplicate implementation (same feature, function, or endpoint)
-4. **Plan fix or approach**
-    - Define a concrete fix/implementation policy
-    - List implementation tasks and clear done criteria
-5. **Draft issue**
-    - **Bug template (`bug_report.md`)**
-      - Overview
-      - Reproduction steps
-      - Impact if not fixed
-      - Suspected cause
-      - Fix proposal / ideal behavior
-      - Notes / concerns
-    - **Standard template (`issue_template.md`)**
-      - Overview / background (required)
-      - Approach
-      - Done criteria
-      - Notes / concerns
-6. **User review**
-    - Share the issue title/body draft with the user
-    - Reflect requested edits, then wait for explicit approval
-7. **Create issue**
-    - Run `gh issue create` only after approval
-    - Preserve line breaks safely via HEREDOC or file-based body
-    - Return the created Issue URL from command output
+## 手順（Steps）
 
-## Command Example
+1. **依頼内容の確認（Confirm request）**
+    - 問題の内容、背景、期待する結果をユーザーから整理する
+    - 不足している情報があるときだけ追加で質問する
+2. **Issue 種別の選択（Select issue type）**
+    - 必ず `.github/ISSUE_TEMPLATE/` 配下のテンプレートを確認する
+    - バグ・不具合: `bug_report.md` を優先する
+    - 機能提案・その他: `issue_template.md` を優先する
+    - テンプレにない項目を足す場合は最小限にし、理由を説明する
+3. **現状実装の調査（Investigate current implementation）**
+    - 関連ファイルと現在の挙動を確認する
+    - バグなら想定原因を、提案なら影響と方針を整理する
+    - 重複実装（同一機能・関数・エンドポイント）がないか確認する
+4. **修正方針・アプローチの整理（Plan fix or approach）**
+    - 具体的な修正方針または実装方針を定義する
+    - 実装タスクと完了条件を明確にする
+5. **ドラフト作成（Draft issue）**
+    - **バグテンプレート（`bug_report.md`）**
+      - 概要
+      - 再現手順
+      - 未修正時の影響
+      - 想定原因
+      - 修正案・あるべき挙動
+      - メモ・懸念
+    - **標準テンプレート（`issue_template.md`）**
+      - 概要・背景（必須）
+      - 対応方針
+      - 完了条件
+      - メモ・懸念
+6. **ユーザー確認（User review）**
+    - タイトル・本文の案をユーザーに共有する
+    - 修正依頼を反映し、明示的な承認があるまで待つ
+7. **Issue 作成（Create issue）**
+    - 承認後にのみ `gh issue create` を実行する
+    - 改行を安全に保つため HEREDOC やファイル経由で body を渡す
+    - コマンド出力から作成された Issue の URL を返す
 
-You can pass content using a HEREDOC with `--body`, or use `--body-file`.
+## コマンド例（Command Example）
 
-### Using HEREDOC
+`--body` に HEREDOC を渡すか、`--body-file` でファイルを指定する。
+
+### HEREDOC を使う場合
 ```bash
 gh issue create --title "Title" --body "$(cat <<'EOF'
 Body
@@ -59,7 +59,7 @@ EOF
 )"
 ```
 
-### Using a body file
+### 本文ファイルを使う場合
 ```bash
 gh issue create --title "Title" --body-file ./issue-body.md
 ```
