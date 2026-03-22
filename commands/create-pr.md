@@ -19,7 +19,7 @@ PR の本文は `.github/PULL_REQUEST_TEMPLATE.md` に基づいて作成する�
     - ブランチをリモートにプッシュする。
     - ブランチが main に対して最新であることを確認する。
 2. **Issue の確認 (Verify Issue)**
-    - PR に紐づく Issue がある場合、`gh issue view <issue_number>`（またはユーザー指定の URL）で内容を取得し、今回の変更内容・スコープと一致するかを確認する。
+    - PR に紐づく Issue がある場合、`gh issue view <issue_number> --json title,body,state,labels,url`（またはユーザー指定の URL）で内容を取得し、今回の変更内容・スコープと一致するかを確認する。デフォルト表示が GraphQL エラーで失敗する場合の扱いは `commands/github-cli-notes.md` を参照する。
     - **完了条件（受け入れ基準）**を読み、実装・PR 説明で満たせているか、不足がないかを確認する。
     - チャット上のユーザー指示と Issue の記述が食い違う場合は、ユーザーの明示指示を優先する。
     - 不足や曖昧さがある場合は、ユーザーに続行方針を確認し、合意が得られるまで PR 作成は行わず中断する。
@@ -34,6 +34,7 @@ PR の本文は `.github/PULL_REQUEST_TEMPLATE.md` に基づいて作成する�
     - 適切なラベルを追加する。
     - レビュアーを割り当てる。
     - 関連する Issue をリンクする。
+    - `gh pr edit` やラベル付与で GraphQL エラー（Projects classic 関連など）が出る場合は、Web UI または `gh api`（REST）での更新を検討する（詳細は `commands/github-cli-notes.md`）。
 
 ## PR テンプレート (PR Template)
 
