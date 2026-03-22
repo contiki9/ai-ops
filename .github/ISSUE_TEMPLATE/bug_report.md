@@ -2,7 +2,7 @@
 name: Bug Report
 about: 不具合の再現手順、影響、原因、修正方針を整理するテンプレート
 title: ''
-labels: ''
+labels: wip
 assignees: ''
 ---
 
