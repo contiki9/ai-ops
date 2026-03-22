@@ -7,6 +7,8 @@ description: リンターのエラーを修正する
 
 Analyze the current file for linting issues and automatically fix them according to the project's coding standards, then apply the fixes directly to the code and explain what changes were made.
 
+**使い分け**: リポジトリ全体で lint を回し、再実行まで含めてクリーンにする場合は `lint-suite.md` を使う。
+
 ## Steps
 
 1. **Identify linting issues**
