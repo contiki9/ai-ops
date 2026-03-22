@@ -24,13 +24,14 @@ The PR body must be created based on `.github/PULL_REQUEST_TEMPLATE.md`.
     - If a section is not applicable, explicitly write that it is not applicable
     - Add screenshots when UI changes are included
 3. **Set up PR**
-    - Create PR with descriptive title
+    - Create PR with a descriptive **title in Japanese** (プルリクエストのタイトルは日本語で記載する)
     - Add appropriate labels
     - Assign reviewers
     - Link related issues
 
 ## PR Template
 
+- **Title language**: プルリクエストのタイトルは**日本語**で書く（英語タイトルは使わない）。
 - Reference: `.github/PULL_REQUEST_TEMPLATE.md`
 - Include at least:
   - `# 概要/対応issue`
