@@ -24,7 +24,7 @@ The PR body must be created based on `.github/PULL_REQUEST_TEMPLATE.md`.
     - If a section is not applicable, explicitly write that it is not applicable
     - Add screenshots when UI changes are included
 3. **Set up PR**
-    - Create PR with a descriptive **title in Japanese** (プルリクエストのタイトルは日本語で記載する)
+    - Create PR with a descriptive **title in Japanese**
     - Add appropriate labels
     - Assign reviewers
     - Link related issues
