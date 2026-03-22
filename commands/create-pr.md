@@ -1,41 +1,48 @@
 ---
 description: プルリクエストを作成する
 ---
-# Create PR
+# プルリクエストの作成 (Create PR)
 
-## Overview
+## 概要 (Overview)
 
-Create a well-structured pull request with proper description, labels, and
-reviewers.
-Before creating the PR, ensure commits are created by following
-`commands/git-commit.md`.
-The PR body must be created based on `.github/PULL_REQUEST_TEMPLATE.md`.
+適切に構成された説明文、ラベル、レビュアーを含むプルリクエスト（PR）を作成する。
+PR を作成する前に、`commands/git-commit.md` に従ってコミットが作成されていることを確認すること。
+PR の本文は `.github/PULL_REQUEST_TEMPLATE.md` に基づいて作成する必要がある。
 
-## Steps
+**注意**: 既存の PR の説明文を更新する場合は、`commands/generate-pr-description.md` を使用すること。
 
-1. **Prepare branch**
-    - Ensure all changes are committed
-    - Create commit messages by following `commands/git-commit.md`
-    - Push branch to remote
-    - Verify branch is up to date with main
-2. **Write PR description**
-    - Use `.github/PULL_REQUEST_TEMPLATE.md` as the base structure
-    - Fill each section with concrete project-specific details
-    - If a section is not applicable, explicitly write that it is not applicable
-    - Add screenshots when UI changes are included
-3. **Set up PR**
-    - Create PR with a descriptive **title in Japanese**
-    - Add appropriate labels
-    - Assign reviewers
-    - Link related issues
+## 手順 (Steps)
 
-## PR Template
+1. **ブランチの準備 (Prepare branch)**
+    - すべての変更がコミットされていることを確認する。
+    - `commands/git-commit.md` に従ってコミットメッセージを作成する。
+    - ブランチをリモートにプッシュする。
+    - ブランチが main に対して最新であることを確認する。
+2. **Issue の確認 (Verify Issue)**
+    - PR に紐づく Issue がある場合、`gh issue view <issue_number>`（またはユーザー指定の URL）で内容を取得し、今回の変更内容・スコープと一致するかを確認する。
+    - **完了条件（受け入れ基準）**を読み、実装・PR 説明で満たせているか、不足がないかを確認する。
+    - チャット上のユーザー指示と Issue の記述が食い違う場合は、ユーザーの明示指示を優先する。
+    - 不足や曖昧さがある場合は、ユーザーに続行方針を確認し、合意が得られるまで PR 作成は行わず中断する。
+    - 紐づく Issue がない場合はこのステップをスキップする。
+3. **PR 説明文の作成 (Write PR description)**
+    - `.github/PULL_REQUEST_TEMPLATE.md` を基本構造として使用する。
+    - 各セクションをプロジェクト固有の具体的な詳細で埋める。
+    - セクションが該当しない場合は、明示的に「該当なし」と記載する。
+    - UI の変更が含まれる場合はスクリーンショットを追加する。
+4. **PR のセットアップ (Set up PR)**
+    - 記述的な **日本語のタイトル** で PR を作成する（英語タイトルは使わない）。
+    - 適切なラベルを追加する。
+    - レビュアーを割り当てる。
+    - 関連する Issue をリンクする。
 
-- **Title language**: プルリクエストのタイトルは**日本語**で書く（英語タイトルは使わない）。
-- Reference: `.github/PULL_REQUEST_TEMPLATE.md`
-- Include at least:
+## PR テンプレート (PR Template)
+
+- **タイトルの言語**: プルリクエストのタイトルは**日本語**で書く。
+- 参照: `.github/PULL_REQUEST_TEMPLATE.md`
+- 少なくとも以下を含めること:
   - `# 概要/対応issue`
   - `# 変更内容`
+  - `# テストの観点`
   - `# 影響範囲`
   - `# 動作要件`
   - `# 補足`
