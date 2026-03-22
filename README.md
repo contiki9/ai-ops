@@ -64,7 +64,7 @@ gemini extensions install https://github.com/gemini-cli-extensions/code-review
 
 ### レビュー結果のスタイル
 
-Gemini への共通トーンや PR 説明のルールは [`.gemini/styleguide.md`](.gemini/styleguide.md) を参照してください（日本語・ですます調など）。
+Gemini への共通トーンや PR 説明のルールはリポジトリルートの [`.gemini/styleguide.md`](https://github.com/contiki9/ai-ops/blob/main/.gemini/styleguide.md) を参照してください（日本語・ですます調など）。ローカルでは同パスのファイルを開けます。
 
 ## コマンド一覧（一部）
 - `feature/` : `feature-dev.md`, `setup-new-feature.md`, `clarify-task.md` など

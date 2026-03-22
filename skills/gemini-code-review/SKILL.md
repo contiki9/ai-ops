@@ -3,47 +3,47 @@ name: gemini-code-review
 description: 作業完了後に Gemini CLI の Code Review 拡張（/code-review または /pr-code-review）でコードレビューを依頼する手順を案内します。CLI・拡張のインストールは README を参照してください。
 ---
 
-# Gemini CLI Code Review Workflow
+# Gemini CLI によるコードレビュー
 
-Use this skill when the user wants a **post-work code review** via **Gemini CLI** with the [Code Review extension](https://github.com/gemini-cli-extensions/code-review) (slash commands `/code-review` and `/pr-code-review`).
+ユーザーが **Gemini CLI** と [Code Review 拡張](https://github.com/gemini-cli-extensions/code-review)（スラッシュコマンド `/code-review` および `/pr-code-review`）を使って、**作業後のコードレビュー**を依頼したい場合にこのスキルを使います。
 
-## Agent role and limitations
+## エージェントの役割と限界
 
-- The **interactive Gemini CLI session runs in the user’s terminal** (or their environment). Do not assume you can drive Gemini CLI on their machine unless they run it themselves or delegate terminal access explicitly.
-- Your primary responsibilities: **walk through the steps**, help interpret **pasted** review output, and when you **summarize or relay** findings in this project, follow `.gemini/styleguide.md`.
+- **対話型の Gemini CLI セッションはユーザーの端末（またはその環境）で動きます**。ユーザー自身が実行する、または端末操作を明示的に任せる場合を除き、あなたがユーザーのマシン上で Gemini CLI を操作できると仮定しないでください。
+- 主な役割は、**手順の案内**、ユーザーが**貼り付けた**レビュー結果の解釈の補助、本プロジェクト内でレビュー内容を**要約・伝達する**際に `.gemini/styleguide.md` に沿うことです。
 
-## Prerequisites (no install steps here)
+## 前提条件（ここではインストール手順は書かない）
 
-1. The user has completed environment setup per **README.md**, section **「Gemini CLI と Code Review 拡張」**.
-2. Prefer the **repository root** as the working directory when running Gemini CLI for branch-based review.
+1. ユーザーは **README.md** の **「Gemini CLI と Code Review 拡張」** に従い、環境セットアップを済ませていること。
+2. ブランチ単位のレビューでは、作業ディレクトリは**リポジトリのルート**を推奨します。
 
-## Headless (non-interactive) CLI and pitfalls
+## ヘッドレス（非対話）CLI と注意点
 
-- **`gemini -p "/code-review"`** (or `-p` with another initial prompt): if the user uses **`--approval-mode plan`**, the CLI may **block shell execution**, so the extension cannot run `git diff` against `origin/HEAD` and the review **aborts**. Use an approval mode that allows the tools the extension needs (e.g. **default** with confirmations, or **`-y` / YOLO** only if the user explicitly accepts that risk).
-- For the **code-review extension path**, include the **literal slash command** **`/code-review`** (or **`/pr-code-review`** for PRs). A vague natural-language-only request can behave like a normal agent turn and **not** follow the extension’s dedicated workflow.
-- The extension may produce **Japanese prose** in the middle but still close with a **short English summary** (e.g. “No issues found…”). If every line must be Japanese, the in-session styleguide reminder (see below) matters even more.
+- **`gemini -p "/code-review"`**（または `-p` で別の初期プロンプト）: ユーザーが **`--approval-mode plan`** を使っていると、CLI が **シェル実行をブロック**し、拡張が `origin/HEAD` に対する `git diff` を実行できずレビューが**中断**することがあります。拡張が必要とするツールを許可する承認モードにしてください（例: 確認付きの**デフォルト**、またはユーザーが明示的にリスクを受け入れる場合のみ **`-y` / YOLO**）。
+- **code-review 拡張の経路**では、**スラッシュコマンド** **`/code-review`**（PR なら **`/pr-code-review`**）を**そのまま**含めてください。曖昧な自然語だけだと、通常のエージェントターンとして扱われ、拡張専用のワークフローに**乗らない**ことがあります。
+- 拡張の出力は途中が**日本語**でも、末尾に**短い英語のまとめ**（例: “No issues found…”）が付くことがあります。行ごとに日本語に揃えたい場合は、セッション内でのスタイルガイドのリマインド（下記）がより重要になります。
 
-## Branch changes: `/code-review`
+## ブランチの変更: `/code-review`
 
-1. **Sanity check**: Ask the user to confirm they are on the **intended branch** and that the repo state matches what they want reviewed (e.g. current branch name, `git status`). You do not need to document the extension’s internal diff rules.
-2. Open a terminal at the target repository root (the project whose diff should be reviewed).
-3. Start **Gemini CLI** (interactive session) in that directory.
-4. **Language (optional)**: If the review should be **Japanese**, have the user tell Gemini in that session—before or when invoking `/code-review`—to follow `.gemini/styleguide.md` (Japanese, desu/masu, brief rationale for suggestions). Extension defaults may not match that automatically.
-5. Run the slash command **`/code-review`** so the extension analyzes changes on the current branch.
+1. **確認**: ユーザーに、レビューしたい**意図したブランチ**にいること、`git status` などでレビュー対象の状態になっていることを確認してもらってください。拡張内部の diff ルールをあなたが文書化する必要はありません。
+2. レビュー対象のリポジトリのルートでターミナルを開きます。
+3. そのディレクトリで **Gemini CLI**（対話セッション）を起動します。
+4. **言語（任意）**: レビューを**日本語**にしたい場合、ユーザーに `/code-review` を叩く前または同時に、セッション内で `.gemini/styleguide.md` に従うよう伝えてもらってください（日本語・ですます調・提案には簡潔な根拠）。拡張のデフォルトが自動で一致するとは限りません。
+5. スラッシュコマンド **`/code-review`** を実行し、現在ブランチの変更を拡張に解析させます。
 
-## Pull request: `/pr-code-review`
+## プルリクエスト: `/pr-code-review`
 
-1. **GitHub MCP** must be enabled in Gemini CLI for PR review. Setup and caveats are documented in **README.md** (same section) and in the [Gemini CLI MCP documentation](https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md).
-2. In Gemini CLI, either:
-   - run **`/pr-code-review`** with the **PR URL** (e.g. `/pr-code-review https://github.com/org/repo/pull/123`), or
-   - configure **`REPOSITORY`**, **`PULL_REQUEST_NUMBER`**, and optionally **`ADDITIONAL_CONTEXT`** per the extension’s documentation, then invoke the command as appropriate for the user’s CLI version.
-3. **Language (optional)**: Same as branch flow—user can ask Gemini in-session for Japanese output aligned with `.gemini/styleguide.md` if needed.
-4. Remind the user that **GitHub authentication and token scopes** depend on their local MCP configuration.
+1. PR レビューには Gemini CLI で **GitHub MCP** を有効にする必要があります。手順と注意点は **README.md**（同セクション）および [Gemini CLI の MCP ドキュメント](https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md)にあります。
+2. Gemini CLI では次のいずれかです。
+   - **PR の URL** を付けて **`/pr-code-review`** を実行する（例: `/pr-code-review https://github.com/org/repo/pull/123`）。
+   - 拡張のドキュメントに従い **`REPOSITORY`**、**`PULL_REQUEST_NUMBER`**、任意で **`ADDITIONAL_CONTEXT`** を設定し、ユーザーの CLI バージョンに合わせてコマンドを起動する。
+3. **言語（任意）**: ブランチの流れと同様、必要ならセッション内で `.gemini/styleguide.md` に沿った日本語出力を依頼できます。
+4. **GitHub の認証とトークンのスコープ**はローカルの MCP 設定に依存する旨、ユーザーに伝えてください。
 
-## Review output quality
+## レビュー結果の品質
 
-When **summarizing, relaying, or acting on** Gemini’s review output inside this project (including text the user pastes from Gemini CLI), align with `.gemini/styleguide.md` at the repository root: **Japanese**, **desu/masu**, professional tone, and **brief rationale** for any change suggestions.
+本プロジェクト内で Gemini のレビュー結果を**要約・伝達・対応に反映する**とき（ユーザーが CLI から貼り付けたテキストを含む）は、リポジトリルートの `.gemini/styleguide.md` に合わせてください。**日本語**、**です・ます調**、プロフェッショナルなトーン、変更提案には**簡潔な根拠**を添えます。
 
-## Usage trigger
+## 利用のきっかけ
 
-Invoke when the user asks for a code review **after finishing work** using **Gemini CLI** and the **code-review** extension (branch or PR), or when they ask how to run that review flow.
+作業完了後に **Gemini CLI** と **code-review** 拡張でコードレビューしてほしい、またはその実行手順を知りたいとユーザーが言ったときに起動します。
