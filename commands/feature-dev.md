@@ -64,9 +64,9 @@ For lightweight branch and setup steps, see `setup-new-feature.md`. For clarific
 
 - [ ] Restated the request and confirmed understanding (Discovery)
 - [ ] Explored the codebase and summarized findings (Exploration)
-- [ ] Asked clarifying questions and **received answers** before design (Phase 3 gate)
-- [ ] Presented multiple architecture options and trade-offs (Architecture)
-- [ ] **User selected or approved** an approach before coding (Phase 4–5 gate)
+- [ ] Asked clarifying questions and **received answers** before design (Clarification)
+- [ ] Presented multiple architecture options and trade-offs (Architecture Design)
+- [ ] **User selected or approved** an approach before coding (Architecture Approval)
 - [ ] Implemented only in-scope changes per approved design (Implementation)
-- [ ] Ran a structured quality review and **user decided** on fixes (Phase 6 gate)
+- [ ] Ran a structured quality review and **user decided** on fixes (Quality Review)
 - [ ] Delivered a final summary with decisions and suggested next steps (Summary)
