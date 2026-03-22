@@ -74,4 +74,4 @@ gh issue view <N> --json title,body,state,labels,url
 gh issue view <N> --repo owner/repo --json title,body,state,labels,url
 ```
 
-非公開リポジトリでは、認証なしの HTTP フェッチが 404 になることがあるため、**認証済みの `gh`** または `gh api` を使ってください。`gh pr view` / `gh pr edit`、本文の安全な編集（`--body-file` と **`.tmp/` 以下**または OS の `/tmp/` など）、PR コメントの REST 取得など、共通の注意事項は `commands/github-cli-notes.md` にまとめています。
+非公開リポジトリでは、認証なしの HTTP フェッチが 404 になることがあるため、**認証済みの `gh`** または `gh api` を使ってください。`gh pr view` / `gh pr edit`、本文の安全な編集（`--body-file` と **`.tmp/` 以下**または OS の `/tmp/`）、PR コメントの REST 取得など、共通の注意事項は `commands/github-cli-notes.md` にまとめています。
