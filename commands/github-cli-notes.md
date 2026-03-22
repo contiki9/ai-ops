@@ -17,7 +17,7 @@ description: GitHub CLI（gh）利用時の失敗しやすい点と回避策の�
 | 状況 | 推奨 |
 |------|------|
 | `gh pr edit` が GraphQL エラー（例: ラベル付与時に classic Projects 関連） | **GitHub Web UI** でラベル・レビューアを設定する、または **`gh api` の REST** で labels 等を更新する |
-| PR のメタデータ | `gh pr view <N> --json ...` で必要フィールドを明示 |
+| PR のメタデータ | `gh pr view <N> --json title,body,state,labels,url` などで必要フィールドを明示 |
 | 行コメントや特定のレビュー本文 | `gh api repos/<owner>/<repo>/pulls/<N>/comments` など **REST** で取得する使い分け |
 
 ## Issue の本文を編集するとき
