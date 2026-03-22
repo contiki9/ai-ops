@@ -25,8 +25,10 @@ Create a short, focused commit message and commit staged changes.
     - Branch naming rule:
       - With Issue key: `<type>/<issue-key>-<short-summary-slug>`
       - Without Issue key: `<type>/<short-summary-slug>`
-    - Example: `feat/PROJ-123-add-profile-image`, `feat/#45-add-image-upload`, `fix/handle-token-refresh`
-    - Create and switch: `git switch -c <new-branch-name>`
+    - **GitHub Issue number (default when known):** If a primary GitHub Issue is known (from the issue URL, chat, or description), **include `#<number>` in the branch name at least once**—this is the expected default, not optional polish. If work spans multiple issues, use the single primary issue the user or PR calls out. Skip the number when there is no corresponding issue (small maintenance, emergency patch, internal-only changes, etc.).
+    - Examples: `feat/PROJ-123-add-profile-image`, `feat/#45-add-image-upload`, `fix/#12-handle-token-refresh`, `fix/handle-token-refresh` (no issue)
+    - **Shell and `#`:** In bash/zsh, `#` starts a comment unless quoted. Always **quote** branch names that contain `#`, e.g. `git switch -c 'feat/#21-add-login'`.
+    - Create and switch: `git switch -c '<new-branch-name>'` (use quotes when the name includes `#`)
 5. **Create short commit message**
     - Base the message on the actual changes in the diff
     - Example: `git commit -m "fix(auth): handle expired token refresh"`

@@ -23,12 +23,13 @@ This workflow generates a commit message based on the current changes according 
    - Run `git branch --show-current` and check the current branch.
    - If the branch is `main` or `master`, do **not** commit directly on that branch.
    - Derive a new branch name from the commit content and create/switch to it before committing.
-     - If an Issue key is known, prepend it in the branch suffix.
-     - Recommended format:
+     - Format:
        - With Issue key: `<type>/<issue-key>-<short-summary-slug>`
        - Without Issue key: `<type>/<short-summary-slug>`
-     - Example: `feat/PROJ-123-add-profile-image`, `feat/#45-add-image-upload`, `fix/handle-token-refresh`
-   - Create and switch: `git switch -c <new-branch-name>`
+     - **GitHub Issue number (default when known):** If a primary GitHub Issue is known (URL, chat, or description), **include `#<number>` in the branch name at least once** by default. For multiple issues, use the single primary issue the user or PR identifies. Omit the number when there is no corresponding issue.
+     - Examples: `feat/PROJ-123-add-profile-image`, `feat/#45-add-image-upload`, `fix/#12-handle-token-refresh`, `fix/handle-token-refresh` (no issue)
+     - **Shell and #:** In bash/zsh, # starts a comment unless quoted. Always **quote** branch names that contain '#', e.g. `git switch -c 'feat/#21-add-login'`.
+   - Create and switch: `git switch -c '<new-branch-name>'` (quote when the name includes `#`)
    - After switching, run commit on the new branch.
 
 4. **Present the Commit Message**
