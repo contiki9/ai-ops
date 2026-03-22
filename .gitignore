@@ -48,9 +48,10 @@ logs/
 *.log
 *.cache
 
-# Temporary files
-tmp/
-temp/
+# Working scratch (not committed): PR/Issue drafts, agent notes, etc.
+.tmp/
+
+# Stray temp-named files outside .tmp/ (prefer placing files under .tmp/ instead)
 *.tmp
 *.temp
 
