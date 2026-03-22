@@ -17,6 +17,8 @@ description: 新機能実装に向けた要件や準備をまとめる
     - 技術的な進め方を検討する
 2. **フィーチャーブランチの作成（Create feature branch）**
     - `main` または `develop` からブランチを切る
+    - **対応する GitHub Issue の番号が分かっている場合**は、ブランチ名に慣習どおり **`#<番号>` を少なくとも 1 回含める**（形式は `commands/git-commit.md` の `<type>/<issue-key>-<short-summary-slug>` と整合させる）。複数 Issue にまたがる場合は、主とする 1 本の番号でよい。Issue がない作業では番号は付けない。
+    - シェル（bash/zsh など）では `#` がコメントとして解釈されることがあるため、ブランチ名をコマンドに渡すときは **クォート**する（例: `git switch -c 'feat/#21-short-slug'`）。
     - ローカル開発環境を整える
     - 新しい依存関係があれば設定する
 3. **アーキテクチャの検討（Plan architecture）**
