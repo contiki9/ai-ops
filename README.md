@@ -9,7 +9,9 @@ AI に依存する現代の開発プロセスを効率化するための、AI �
 
 ## ディレクトリ構成
 - `commands/` : AI エージェントに渡すプロンプトやワークフローの Markdown ファイル集。
-- `skills/` : 今後追加予定のより高度なスクリプトや拡張スキル。
+- `skills/` : エージェント向けの補助スキル。各サブディレクトリに `SKILL.md` があります。
+  - **`create-command`**: 新しい `commands/` 用 Markdown コマンドを追加するときの指針。
+  - **`gemini-code-review`**: 作業完了後に Gemini CLI の Code Review 拡張（`/code-review` / `/pr-code-review`）でレビューするときの運用（セットアップは下文「Gemini CLI と Code Review 拡張」）。
 - `AGENTS.md` : AI エージェントがこのリポジトリを扱うための共通ガイドライン。
 
 ## 使い方（AI ツール別セットアップ）
@@ -31,6 +33,38 @@ Antigravity のチャット内で `/slash-command` として利用可能にな�
 
 ### Claude Code
 Claude Code のコマンドやコンテキストとして利用するために、`.claude/commands/` や `CLAUDE.md` へ適用します。
+
+## Gemini CLI と Code Review 拡張
+
+作業ブランチや PR に対して [Gemini CLI Code Review extension](https://github.com/gemini-cli-extensions/code-review) でレビューを取りたい場合のセットアップです。実際のレビュー手順（`/code-review` / `/pr-code-review`）はエージェント向けスキル [`skills/gemini-code-review/SKILL.md`](skills/gemini-code-review/SKILL.md) にまとめています（インストール手順は本節のみに記載します）。
+
+### Gemini CLI
+
+- 未導入の場合は [Gemini CLI のインストール手順](https://github.com/google-gemini/gemini-cli?tab=readme-ov-file#-installation)に従ってください。
+- Code Review 拡張を使うには **Gemini CLI v0.4.0 以上**が必要です（拡張 README の要件）。バージョンは `gemini --version` などで確認してください。
+
+### Code Review 拡張のインストール
+
+ターミナルで次を実行します。
+
+```bash
+gemini extensions install https://github.com/gemini-cli-extensions/code-review
+```
+
+### PR をレビューする場合（GitHub MCP）
+
+`/pr-code-review` を使うには Gemini CLI 側で [GitHub MCP サーバー](https://github.com/github/github-mcp-server) を有効にする必要があります。設定の詳細は [Gemini CLI の MCP ドキュメント](https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md)を参照してください。
+
+拡張の README では、PR レビュー時に次のいずれかが使えるとされています。
+
+- **`/pr-code-review <PR の URL>`** で PR を指定する
+- 環境変数 **`REPOSITORY`**（リポジトリ）、**`PULL_REQUEST_NUMBER`**（PR 番号）、任意で **`ADDITIONAL_CONTEXT`**（フォーカスしたい文脈）を設定する
+
+**注意**: GitHub への認証方法・トークンのスコープ・ネットワーク環境は利用者ごとに異なります。MCP 経由でリポジトリにアクセスできない場合は、ローカル設定と GitHub MCP のドキュメントを確認してください。
+
+### レビュー結果のスタイル
+
+Gemini への共通トーンや PR 説明のルールは [`.gemini/styleguide.md`](.gemini/styleguide.md) を参照してください（日本語・ですます調など）。
 
 ## コマンド一覧（一部）
 - `feature/` : `feature-dev.md`, `setup-new-feature.md`, `clarify-task.md` など
