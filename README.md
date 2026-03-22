@@ -33,6 +33,7 @@ Antigravity のチャット内で `/slash-command` として利用可能にな�
 Claude Code のコマンドやコンテキストとして利用するために、`.claude/commands/` や `CLAUDE.md` へ適用します。
 
 ## コマンド一覧（一部）
+- `feature/` : `feature-dev.md`, `setup-new-feature.md`, `clarify-task.md` など
 - `code-quality/` : `lint-fix.md`, `refactor-code.md`, `deslop.md` など
 - `documentation/` : `generate-api-docs.md`, `onboard-new-developer.md` など
 - `git/` : `code-review.md`, `create-pr.md`, `git-commit.md`, `git-commit-detailed.md` など
