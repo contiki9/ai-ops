@@ -72,22 +72,96 @@ Gemini への共通トーンや PR 説明のルールはリポジトリルート
 - **整理方針・重複の扱い（Lint / Security / 図解 / PR など）**: [`docs/command-consolidation-policy.md`](docs/command-consolidation-policy.md)（Issue #8 の合意ベースライン）
 - **実体**: すべて [`commands/`](commands/) 直下の Markdown。ツールによってはこのディレクトリをそのままリンクまたはコピーする
 
-## コマンド一覧（目的別の入り口）
+## コマンド一覧（全件）
 
-| 目的 | 代表コマンド |
-|------|----------------|
-| 機能の立ち上げ・整理 | `setup-new-feature.md`, `feature-dev.md`, `clarify-task.md`, `roadmap.md` |
-| Lint / 品質 | `lint-suite.md`（リポ全体）, `lint-fix.md`（対象ファイル中心）, `refactor-code.md`, `deslop.md` |
-| テスト・デバッグ | `run-all-tests-and-fix.md`, `write-unit-tests.md`, `debug-issue.md`, `fix-compile-errors.md` |
-| レビュー | `code-review.md`, `light-review-existing-diffs.md` |
-| PR・GitHub | `create-pr.md`, `generate-pr-description.md`, `address-github-pr-comments.md`, `github-cli-notes.md` |
-| Git 操作 | `git-commit.md`, `git-commit-detailed.md`, `git-push.md`, `fix-git-issues.md` |
-| セキュリティ | `security-audit.md`, `security-review.md` |
-| 図解 | `diagrams.md`, `overview.md`（`visualize.md` は非推奨・`diagrams.md` へ） |
-| ドキュメント | `add-documentation.md`, `generate-api-docs.md`, `onboard-new-developer.md` |
-| その他 | `handover.md`, `accessibility-audit.md`, `optimize-performance.md`, `database-migration.md`, `docker-logs.md`, `create-issue.md` など |
+`commands/` は物理的にフラット配置です。下表のカテゴリは**主目的に基づく論理分類**であり、ディレクトリ構造とは一致しません。責務の整理・重複の扱いは [`docs/command-consolidation-policy.md`](docs/command-consolidation-policy.md) を参照してください。各コマンドの説明は対応する Markdown の frontmatter `description` と同一です（ファイル名は昇順）。
 
-上表にないファイルも `commands/` 内にあります。一覧は `ls commands` またはリポジトリのファイルツリーで確認してください。
+### 機能開発・タスク整理
+
+| コマンド名 | 説明 |
+|------------|------|
+| `clarify-task.md` | タスクの内容を明確化・整理する |
+| `feature-dev.md` | 新機能・新規要望向けの構造化開発ワークフロー（発見から実装・レビューまで） |
+| `roadmap.md` | 開発ロードマップを作成・更新する |
+| `setup-new-feature.md` | 新機能実装に向けた要件や準備をまとめる |
+
+### Lint・コード品質
+
+| コマンド名 | 説明 |
+|------------|------|
+| `deslop.md` | コードの無駄を省きクリーンアップする |
+| `lint-fix.md` | リンターのエラーを修正する |
+| `lint-suite.md` | プロジェクト全体のリンターを実行し、修正してクリーンにする |
+| `refactor-code.md` | コードのリファクタリングを実施する |
+
+### テスト・ビルド・デバッグ
+
+| コマンド名 | 説明 |
+|------------|------|
+| `debug-issue.md` | バグや問題をデバッグする |
+| `fix-compile-errors.md` | コンパイルエラーを修正する |
+| `run-all-tests-and-fix.md` | 全テストを実行し、エラー箇所を修正する |
+| `write-unit-tests.md` | 単体テストを作成する |
+
+### レビュー
+
+| コマンド名 | 説明 |
+|------------|------|
+| `code-review.md` | コードレビューを実施する |
+| `light-review-existing-diffs.md` | 既存の差分を軽くレビューする |
+
+### GitHub・Issue・PR
+
+| コマンド名 | 説明 |
+|------------|------|
+| `address-github-pr-comments.md` | PRのレビューコメントに対応する |
+| `create-issue.md` | GitHub Issueを作成する |
+| `create-pr.md` | プルリクエストを作成する |
+| `generate-pr-description.md` | プルリクエストの詳細を最新のものに更新する |
+| `github-cli-notes.md` | GitHub CLI（gh）利用時の失敗しやすい点と回避策のメモ |
+
+### Git 操作
+
+| コマンド名 | 説明 |
+|------------|------|
+| `fix-git-issues.md` | Gitのコンフリクトや問題を解決する |
+| `git-commit-detailed.md` | コミットメッセージ詳細版を作成するワークフロー |
+| `git-commit.md` | コミットを作成する |
+| `git-push.md` | 変更をリモートへプッシュする |
+
+### セキュリティ
+
+| コマンド名 | 説明 |
+|------------|------|
+| `security-audit.md` | セキュリティ監査を実施する |
+| `security-review.md` | コードのセキュリティレビューを実施する |
+
+### 図解・可視化
+
+| コマンド名 | 説明 |
+|------------|------|
+| `diagrams.md` | アーキテクチャやフローの図解を作成する |
+| `overview.md` | プロジェクトの全体概要を記述する |
+| `visualize.md` | （非推奨）図解は diagrams.md を使用してください |
+
+### ドキュメント・オンボーディング
+
+| コマンド名 | 説明 |
+|------------|------|
+| `add-documentation.md` | ドキュメントを追加・更新する |
+| `generate-api-docs.md` | APIドキュメントを生成する |
+| `onboard-new-developer.md` | 新規参画者向けのオンボーディングガイドを作成する |
+
+### 運用・品質横断・インフラ
+
+| コマンド名 | 説明 |
+|------------|------|
+| `accessibility-audit.md` | アクセシビリティの監査を実施する |
+| `add-error-handling.md` | エラーハンドリングを追加する |
+| `database-migration.md` | データベースのマイグレーションを実行する |
+| `docker-logs.md` | Dockerのログを確認・分析する |
+| `handover.md` | 現在のセッション状態を引き継ぎ書（HANDOVER.md）として出力します |
+| `optimize-performance.md` | コードのパフォーマンスを最適化する |
 
 ## ライセンスについて
 本リポジトリの元となるコマンド群は、`hamzafer/cursor-commands` のコードをベースとして取り込み、独自の再編を行ったものです。オリジナルコードのライセンスおよび帰属については `THIRD_PARTY_LICENSES.md` を参照してください。
