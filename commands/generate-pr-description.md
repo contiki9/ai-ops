@@ -1,41 +1,72 @@
 ---
-description: PRの説明文を自動生成する
+description: プルリクエストの詳細を最新のものに更新する
 ---
 # Generate PR Description
 
-## Overview
+## 概要
 
-Create a comprehensive pull request description based on the changes in this branch and format it as proper markdown for use in a GitHub PR description.
+既存のプルリクエスト（PR）の本文と、実際のコミット内容やコードの差分を比較し、最新の状態に合わせた更新案を作成します。
+実装済みだが説明が漏れている項目、実態と乖離している記述、不足しているテスト情報などを補完し、レビューがスムーズに進む状態にします。
 
-## Steps
+## 運用上の前提
 
-1. **Summary**
-    - Provide a clear, concise summary of what this PR accomplishes
-2. **Changes Made**
-    - List the key changes made in this PR
-    - Include both code and non-code changes
-    - Highlight any breaking changes
-3. **Testing**
-    - Describe how the changes were tested
-    - Include any new test cases added
-    - Note any manual testing performed
-4. **Related Issues**
-    - Link to any related issues or tickets
-    - Use closing keywords if this PR resolves issues
-5. **Additional Notes**
-    - Any deployment considerations
-    - Follow-up work required
-    - Notes for reviewers
+- 対象となる既存PRの本文が取得可能であること（`gh pr view` などを使用）
+- 作業ブランチが最新のコード差分（またはコミット履歴）を反映していること
+- 本コマンドの出力は「更新案」であり、最終的なPRへの反映前に必ず内容を確認すること
 
-## Generate PR Description Checklist
+## 手順
 
-- [ ] Provided clear, concise summary of what this PR accomplishes
-- [ ] Listed all key changes made in this PR
-- [ ] Highlighted any breaking changes
-- [ ] Described how the changes were tested
-- [ ] Included any new test cases added
-- [ ] Noted any manual testing performed
-- [ ] Linked to any related issues or tickets
-- [ ] Included any deployment considerations
-- [ ] Noted any follow-up work required
-- [ ] Formatted as proper markdown for GitHub PR
+1. **既存情報の確認**
+    - 現在のPR本文（Description）を取得する
+    - 対象ブランチの全コミットメッセージと、`main`（またはベースブランチ）との差分（diff）を確認する
+2. **差分分析と抽出**
+    - 実装内容とPR本文を比較し、以下の観点で更新対象を抽出する：
+        - **記載漏れ**: 実装済みだがPR本文に記載されていない機能・変更点
+        - **不整合**: PR本文に記載があるが、実際のコード変更と一致しない、または古い記述
+        - **不足情報**: テスト結果、影響範囲、動作要件、補足事項（スクショなど）の不足
+3. **更新案の生成**
+    - `.github/PULL_REQUEST_TEMPLATE.md` の構造を維持しつつ、最新の状況を反映した本文を日本語で作成する
+    - 変更箇所が明確になるよう、必要に応じてセクション別に構成する
+4. **最終確認**
+    - 生成された内容に過剰な要約や誤った解釈が含まれていないか確認する
+    - そのままPR本文に貼り付け可能な形式で出力する
+
+## チェックポイント（比較観点）
+
+- [ ] 実装したすべての主要な変更が「変更内容」に含まれているか
+- [ ] 削除または変更された古い仕様がPR本文に残っていないか
+- [ ] 行ったテストの内容（ユニットテスト、手動確認など）が具体的に記載されているか
+- [ ] 変更による他機能への影響（影響範囲）が漏れなく考慮されているか
+- [ ] 動作に必要な環境変数や設定変更（動作要件）が明記されているか
+- [ ] レビュー時に注意すべき点や補足事項が最新か
+
+## 出力フォーマット
+
+以下のテンプレートに従い、すべての項目を日本語で出力してください。
+
+```markdown
+# 概要/対応issue
+(更新内容)
+
+# 変更内容
+(実装の差分に基づいた詳細)
+
+## 追加したファイル
+- ...
+## 変更したファイル
+- ...
+## 削除したファイル
+- ...
+
+# テストの観点
+(実施したテストの具体的な内容)
+
+# 影響範囲
+(変更による波及箇所)
+
+# 動作要件
+(必要な環境設定など)
+
+# 補足
+(レビュアーへの申し送り事項)
+```
