@@ -1,12 +1,11 @@
 ---
-description: リンターの設定と実行を行う
+description: プロジェクト全体のリンターを実行し、修正してクリーンにする
 ---
-# Fix Lint Issues
+# Lint Suite（プロジェクト単位のリンター実行）
 
 ## Overview
 
-Run project linters, apply fixes, and ensure the codebase meets formatting and
-style requirements before merging changes.
+リポジトリ全体に対してリンターを実行し、自動修正可能なものを適用し、マージ前にフォーマット・スタイル要件を満たすまで繰り返す。**特定ファイルだけ直したい**場合は `lint-fix.md` を使う。
 
 ## Steps
 

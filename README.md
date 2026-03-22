@@ -5,7 +5,7 @@ AI に依存する現代の開発プロセスを効率化するための、AI �
 ## 特徴
 - **ツールの非依存化**: Cursor や Claude といった特定ツールに依存せず、すべての AI アシスタントに共通の指示・ワークフローを提供します。
 - **日本語中心のワークフロー**: 利用頻度の高い `commands/` の本文は日本語で読めるよう整備しており、`AGENTS.md` の言語方針と揃えています（CLI や慣習的な英語表記は維持します）。
-- **カテゴリ別の整理**: コード品質、Git 操作、テスト、ドキュメントなど、目的別にコマンドが整理されています。
+- **カテゴリ別の整理**: コード品質、Git 操作、テスト、ドキュメントなど、目的別にコマンドが整理されています（物理配置は `commands/` 直下。迷いやすい重複の整理方針は [`docs/command-consolidation-policy.md`](docs/command-consolidation-policy.md) を参照）。
 - **バージョン管理**: 今後追加されるカスタムワークフローやスキルはすべて本リポジトリで管理します。
 
 ## ディレクトリ構成
@@ -67,13 +67,27 @@ gemini extensions install https://github.com/gemini-cli-extensions/code-review
 
 Gemini への共通トーンや PR 説明のルールはリポジトリルートの [`.gemini/styleguide.md`](https://github.com/contiki9/ai-ops/blob/main/.gemini/styleguide.md) を参照してください（日本語・ですます調など）。ローカルでは同パスのファイルを開けます。
 
-## コマンド一覧（一部）
-- `feature/` : `feature-dev.md`, `setup-new-feature.md`, `clarify-task.md` など
-- `code-quality/` : `lint-fix.md`, `refactor-code.md`, `deslop.md` など
-- `documentation/` : `generate-api-docs.md`, `onboard-new-developer.md` など
-- `git/` : `code-review.md`, `create-pr.md`, `git-commit.md`, `git-commit-detailed.md` など
-- `testing/` : `run-all-tests-and-fix.md`, `debug-issue.md` など
-- `security/` : `security-audit.md` など
+## コマンドの探し方
+
+- **整理方針・重複の扱い（Lint / Security / 図解 / PR など）**: [`docs/command-consolidation-policy.md`](docs/command-consolidation-policy.md)（Issue #8 の合意ベースライン）
+- **実体**: すべて [`commands/`](commands/) 直下の Markdown。ツールによってはこのディレクトリをそのままリンクまたはコピーする
+
+## コマンド一覧（目的別の入り口）
+
+| 目的 | 代表コマンド |
+|------|----------------|
+| 機能の立ち上げ・整理 | `setup-new-feature.md`, `feature-dev.md`, `clarify-task.md`, `roadmap.md` |
+| Lint / 品質 | `lint-suite.md`（リポ全体）, `lint-fix.md`（対象ファイル中心）, `refactor-code.md`, `deslop.md` |
+| テスト・デバッグ | `run-all-tests-and-fix.md`, `write-unit-tests.md`, `debug-issue.md`, `fix-compile-errors.md` |
+| レビュー | `code-review.md`, `light-review-existing-diffs.md` |
+| PR・GitHub | `create-pr.md`, `generate-pr-description.md`, `address-github-pr-comments.md`, `github-cli-notes.md` |
+| Git 操作 | `git-commit.md`, `git-commit-detailed.md`, `git-push.md`, `fix-git-issues.md` |
+| セキュリティ | `security-audit.md`, `security-review.md` |
+| 図解 | `diagrams.md`, `overview.md`（`visualize.md` は非推奨・`diagrams.md` へ） |
+| ドキュメント | `add-documentation.md`, `generate-api-docs.md`, `onboard-new-developer.md` |
+| その他 | `handover.md`, `accessibility-audit.md`, `optimize-performance.md`, `database-migration.md`, `docker-logs.md`, `create-issue.md` など |
+
+上表にないファイルも `commands/` 内にあります。一覧は `ls commands` またはリポジトリのファイルツリーで確認してください。
 
 ## ライセンスについて
 本リポジトリの元となるコマンド群は、`hamzafer/cursor-commands` のコードをベースとして取り込み、独自の再編を行ったものです。オリジナルコードのライセンスおよび帰属については `THIRD_PARTY_LICENSES.md` を参照してください。
