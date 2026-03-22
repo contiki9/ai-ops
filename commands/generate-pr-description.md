@@ -14,6 +14,10 @@ This workflow focuses on filling in missing implementation details, correcting i
 - The current branch must reflect the latest code changes or commit history.
 - The output of this command is a "proposal"; always review the content before applying it to the PR.
 
+## Reference Template
+
+- Use the project's PR template as the base for the output: `.github/PULL_REQUEST_TEMPLATE.md`
+
 ## Steps
 
 1. **Information Gathering**
@@ -25,7 +29,7 @@ This workflow focuses on filling in missing implementation details, correcting i
         - **Inconsistencies**: Descriptions in the PR body that do not match the actual code changes or are outdated.
         - **Missing Details**: Lack of testing results, impact areas, operational requirements, or supplemental info (e.g., screenshots).
 3. **Generate Update Proposal**
-    - Create an updated PR body in Japanese while maintaining the structure of `.github/PULL_REQUEST_TEMPLATE.md`.
+    - Create an updated PR body in Japanese while maintaining the structure of the template specified in "Reference Template".
     - Organize by sections as needed to make changes clear.
 4. **Final Review**
     - Verify that the generated content does not contain excessive summarization or misinterpretations.
@@ -42,31 +46,5 @@ This workflow focuses on filling in missing implementation details, correcting i
 
 ## Output Format
 
-Follow the template below and output all items in Japanese.
-
-```markdown
-# 概要/対応issue
-(更新内容)
-
-# 変更内容
-(実装の差分に基づいた詳細)
-
-## 追加したファイル
-- ...
-## 変更したファイル
-- ...
-## 削除したファイル
-- ...
-
-# テストの観点
-(実施したテストの具体的な内容)
-
-# 影響範囲
-(変更による波及箇所)
-
-# 動作要件
-(必要な環境設定など)
-
-# 補足
-(レビュアーへの申し送り事項)
-```
+Follow the template structure from `.github/PULL_REQUEST_TEMPLATE.md` and output all items in Japanese.
+Ensure that the output includes all sections defined in the template (e.g., 概要/対応issue, 変更内容, テストの観点, 影響範囲, 動作要件, 補足).
