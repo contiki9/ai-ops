@@ -28,7 +28,7 @@ This workflow generates a commit message based on the current changes according 
        - Without Issue key: `<type>/<short-summary-slug>`
      - **GitHub Issue number (default when known):** If a primary GitHub Issue is known (URL, chat, or description), **include `#<number>` in the branch name at least once** by default. For multiple issues, use the single primary issue the user or PR identifies. Omit the number when there is no corresponding issue.
      - Examples: `feat/PROJ-123-add-profile-image`, `feat/#45-add-image-upload`, `fix/#12-handle-token-refresh`, `fix/handle-token-refresh` (no issue)
-     - **Shell and `#`:** Quote branch names that contain `#`, e.g. `git switch -c 'feat/#21-add-login'`.
+     - **Shell and #:** In bash/zsh, # starts a comment unless quoted. Always **quote** branch names that contain '#', e.g. `git switch -c 'feat/#21-add-login'`.
    - Create and switch: `git switch -c '<new-branch-name>'` (quote when the name includes `#`)
    - After switching, run commit on the new branch.
 
