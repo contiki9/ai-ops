@@ -33,7 +33,7 @@ description: Gemini CLI の Code Review 拡張で、作業後レビューを安�
 
 1. `gemini -p` でバッククォートを使わない  
    - NG: ``gemini -p "`.gemini/styleguide.md` に従って..."``  
-   - シェル展開による失敗を避けるため、自然文で指示する。
+   - シェル展開を避けるため、シングルクォートで囲むか、バッククォートを使わないようにします。
 2. PR レビューはまず `--approval-mode yolo` を試す  
    - 拡張内部のツール実行が止まりにくい。
 3. Private PR で `.diff` が 404 の場合はローカル取得へ切り替える  
