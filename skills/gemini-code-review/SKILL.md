@@ -1,49 +1,49 @@
 ---
 name: gemini-code-review
-description: 作業完了後に Gemini CLI の Code Review 拡張（/code-review または /pr-code-review）でコードレビューを依頼する手順を案内します。CLI・拡張のインストールは README を参照してください。
+description: Gemini CLI の Code Review 拡張で、作業後レビューを安全に実行するための最小手順と再発防止ルールを案内します。
 ---
 
 # Gemini CLI によるコードレビュー
 
-ユーザーが **Gemini CLI** と [Code Review 拡張](https://github.com/gemini-cli-extensions/code-review)（スラッシュコマンド `/code-review` および `/pr-code-review`）を使って、**作業後のコードレビュー**を依頼したい場合にこのスキルを使います。
+作業完了後に、**Gemini CLI** と [Code Review 拡張](https://github.com/gemini-cli-extensions/code-review)（`/code-review`, `/pr-code-review`）でレビューしたいときに使います。
 
 ## エージェントの役割と限界
 
-- **対話型の Gemini CLI セッションはユーザーの端末（またはその環境）で動きます**。ユーザー自身が実行する、または端末操作を明示的に任せる場合を除き、あなたがユーザーのマシン上で Gemini CLI を操作できると仮定しないでください。
-- 主な役割は、**手順の案内**、ユーザーが**貼り付けた**レビュー結果の解釈の補助、本プロジェクト内でレビュー内容を**要約・伝達する**際に `.gemini/styleguide.md` に沿うことです。
+- 対話型の Gemini CLI は基本的にユーザー環境で動作します。エージェントは手順案内と結果整理を担当します。
+- レビュー結果を本プロジェクトで要約・共有する際は `.gemini/styleguide.md`（日本語・ですます調・簡潔な根拠）に従います。
 
-## 前提条件（ここではインストール手順は書かない）
+## 前提
 
-1. ユーザーは **README.md** の **「Gemini CLI と Code Review 拡張」** に従い、環境セットアップを済ませていること。
-2. ブランチ単位のレビューでは、作業ディレクトリは**リポジトリのルート**を推奨します。
-
-## ヘッドレス（非対話）CLI と注意点
-
-- **`gemini -p "/code-review"`**（または `-p` で別の初期プロンプト）: ユーザーが **`--approval-mode plan`** を使っていると、CLI が **シェル実行をブロック**し、拡張が `origin/HEAD` に対する `git diff` を実行できずレビューが**中断**することがあります。拡張が必要とするツールを許可する承認モードにしてください（例: 確認付きの**デフォルト**、またはユーザーが明示的にリスクを受け入れる場合のみ **`-y` / YOLO**）。
-- **code-review 拡張の経路**では、**スラッシュコマンド** **`/code-review`**（PR なら **`/pr-code-review`**）を**そのまま**含めてください。曖昧な自然語だけだと、通常のエージェントターンとして扱われ、拡張専用のワークフローに**乗らない**ことがあります。
-- 拡張の出力は途中が**日本語**でも、末尾に**短い英語のまとめ**（例: “No issues found…”）が付くことがあります。行ごとに日本語に揃えたい場合は、セッション内でのスタイルガイドのリマインド（下記）がより重要になります。
+- セットアップは `README.md` の「Gemini CLI と Code Review 拡張」に従って完了済みであること。
+- 実行ディレクトリはリポジトリルートを推奨。
 
 ## ブランチの変更: `/code-review`
 
-1. **確認**: ユーザーに、レビューしたい**意図したブランチ**にいること、`git status` などでレビュー対象の状態になっていることを確認してもらってください。拡張内部の diff ルールをあなたが文書化する必要はありません。
-2. レビュー対象のリポジトリのルートでターミナルを開きます。
-3. そのディレクトリで **Gemini CLI**（対話セッション）を起動します。
-4. **言語（任意）**: レビューを**日本語**にしたい場合、ユーザーに `/code-review` を叩く前または同時に、セッション内で `.gemini/styleguide.md` に従うよう伝えてもらってください（日本語・ですます調・提案には簡潔な根拠）。拡張のデフォルトが自動で一致するとは限りません。
-5. スラッシュコマンド **`/code-review`** を実行し、現在ブランチの変更を拡張に解析させます。
+1. 対象ブランチと `git status` を確認する。
+2. Gemini CLI を起動し、必要なら「`.gemini/styleguide.md` に従って日本語で」と先に伝える。
+3. `/code-review` を実行する。
 
 ## プルリクエスト: `/pr-code-review`
 
-1. PR レビューには Gemini CLI で **GitHub MCP** を有効にする必要があります。手順と注意点は **README.md**（同セクション）および [Gemini CLI の MCP ドキュメント](https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md)にあります。
-2. Gemini CLI では次のいずれかです。
-   - **PR の URL** を付けて **`/pr-code-review`** を実行する（例: `/pr-code-review https://github.com/org/repo/pull/123`）。
-   - 拡張のドキュメントに従い **`REPOSITORY`**、**`PULL_REQUEST_NUMBER`**、任意で **`ADDITIONAL_CONTEXT`** を設定し、ユーザーの CLI バージョンに合わせてコマンドを起動する。
-3. **言語（任意）**: ブランチの流れと同様、必要ならセッション内で `.gemini/styleguide.md` に沿った日本語出力を依頼できます。
-4. **GitHub の認証とトークンのスコープ**はローカルの MCP 設定に依存する旨、ユーザーに伝えてください。
+1. Gemini CLI 側で GitHub MCP を有効化する。
+2. `/pr-code-review <PR_URL>` を実行する（または拡張ドキュメント準拠の環境変数方式）。
+3. 認証やトークンスコープはローカル設定依存であることを前提にする。
 
-## レビュー結果の品質
+## 再発防止ルール（最重要）
 
-本プロジェクト内で Gemini のレビュー結果を**要約・伝達・対応に反映する**とき（ユーザーが CLI から貼り付けたテキストを含む）は、リポジトリルートの `.gemini/styleguide.md` に合わせてください。**日本語**、**です・ます調**、プロフェッショナルなトーン、変更提案には**簡潔な根拠**を添えます。
+1. `gemini -p` でバッククォートを使わない  
+   - NG: ``gemini -p "`.gemini/styleguide.md` に従って..."``  
+   - シェル展開による失敗を避けるため、自然文で指示する。
+2. PR レビューはまず `--approval-mode yolo` を試す  
+   - 拡張内部のツール実行が止まりにくい。
+3. Private PR で `.diff` が 404 の場合はローカル取得へ切り替える  
+   - 例: `git fetch origin pull/<n>/head:<tmp-branch>`
+4. 失敗シグナルが出たら即フォールバックする  
+   - 例: `Unauthorized tool call`, `Tool not found`, PR本文取得で停止。  
+   - 対応: プロセス停止 -> `--approval-mode yolo` で再実行 -> だめなら対話モード `/pr-code-review`。
+5. 実行後は結果を最低限まとめて返す  
+   - `Findings`（重大度順）/ `Open questions` / 提案アクション（採用 or 見送り）。
 
 ## 利用のきっかけ
 
-作業完了後に **Gemini CLI** と **code-review** 拡張でコードレビューしてほしい、またはその実行手順を知りたいとユーザーが言ったときに起動します。
+作業完了後に Gemini CLI でレビューしたいと言われたときに使います。
