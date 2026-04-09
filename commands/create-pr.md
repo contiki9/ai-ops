@@ -19,7 +19,9 @@ PR の本文は `.github/PULL_REQUEST_TEMPLATE.md` に基づいて作成する�
     - ブランチをリモートにプッシュする。
     - ブランチが main に対して最新であることを確認する。
 2. **Issue の確認 (Verify Issue)**
-    - PR に紐づく Issue がある場合、`gh issue view <issue_number> --json title,body,state,labels,url`（またはユーザー指定の URL）で内容を取得し、今回の変更内容・スコープと一致するかを確認する。デフォルト表示が GraphQL エラーで失敗する場合の扱いは `commands/github-cli-notes.md` を参照する。
+    - PR に紐づく Issue がある場合、まず `gh issue view <issue_number> --json title,body,state,labels,url`（必要なら `--repo owner/repo` 付き）で内容を取得し、今回の変更内容・スコープと一致するかを確認する。
+    - `gh issue view` が失敗する場合は、`gh api repos/<owner>/<repo>/issues/<issue_number>` で取得する。デフォルト表示（`gh issue view <issue_number>`）は使わない。
+    - 詳細なトラブルシュートは `commands/github-cli-notes.md` を参照する。
     - **完了条件（受け入れ基準）**を読み、実装・PR 説明で満たせているか、不足がないかを確認する。
     - チャット上のユーザー指示と Issue の記述が食い違う場合は、ユーザーの明示指示を優先する。
     - 不足や曖昧さがある場合は、ユーザーに続行方針を確認し、合意が得られるまで PR 作成は行わず中断する。
