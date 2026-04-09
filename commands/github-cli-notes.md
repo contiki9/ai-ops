@@ -8,14 +8,22 @@ description: GitHub CLI（gh）利用時の失敗しやすい点と回避策の�
 ## Issue の取得
 
 | 状況 | 推奨 |
-|------|------|
-| `gh issue view <N>` が GraphQL エラー（Projects classic 廃止メッセージなど）で全体が失敗 | `gh issue view <N> --json title,body,state,labels,url` など、必要フィールドのみ指定。または `gh api` |
+| --- | --- |
+| `gh issue view <issue_number>` が GraphQL エラー（Projects classic 廃止メッセージなど）で全体が失敗 | `gh issue view <issue_number> --json title,body,state,labels,url` など、必要フィールドのみ指定。または `gh api` |
 | Web の raw URL を認証なしで取得し 404（非公開リポなど） | **`gh issue view` / `gh api`** など認証済み経路を使う |
+
+推奨する取得順序（自動化・エージェント作業）:
+
+1. `gh issue view <issue_number> --json title,body,state,labels,url`
+2. 必要なら `gh issue view <issue_number> --repo <owner>/<repo> --json title,body,state,labels,url`
+3. 失敗時は `gh api repos/<owner>/<repo>/issues/<issue_number>` にフォールバック
+
+`gh issue view <issue_number>` のデフォルト表示のみを実行する手順は避けてください。
 
 ## Pull Request
 
 | 状況 | 推奨 |
-|------|------|
+| --- | --- |
 | `gh pr edit` が GraphQL エラー（例: ラベル付与時に classic Projects 関連） | **GitHub Web UI** でラベル・レビューアを設定する、または **`gh api` の REST** で labels 等を更新する |
 | PR のメタデータ | `gh pr view <N> --json title,body,state,labels,url` などで必要フィールドを明示 |
 | 行コメントや特定のレビュー本文 | `gh api repos/<owner>/<repo>/pulls/<N>/comments` など **REST** で取得する使い分け |
