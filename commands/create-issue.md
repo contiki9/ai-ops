@@ -68,14 +68,14 @@ gh issue create --title "Title" --body-file .tmp/issue-body.md
 
 ## GitHub CLI: Issue の閲覧（トラブルシュート）
 
-自動化やエージェントが Issue の内容を取得するときは、**`--json` で必要フィールドを明示**してください。デフォルト表示（`gh issue view <N>` のみ）は Projects (classic) 関連の GraphQL 非推奨で失敗しやすいため、実行手順には含めません。
+自動化やエージェントが Issue の内容を取得するときは、**`--json` で必要フィールドを明示**してください。デフォルト表示（`gh issue view <issue_number>` のみ）は Projects (classic) 関連の GraphQL 非推奨で失敗しやすいため、実行手順には含めません。
 
 ```bash
-gh issue view <N> --json title,body,state,labels,url
+gh issue view <issue_number> --json title,body,state,labels,url
 # リポジトリを明示する例
-gh issue view <N> --repo owner/repo --json title,body,state,labels,url
+gh issue view <issue_number> --repo <owner>/<repo> --json title,body,state,labels,url
 # `gh issue view` が失敗する場合のフォールバック（REST）
-gh api repos/owner/repo/issues/<N>
+gh api repos/<owner>/<repo>/issues/<issue_number>
 ```
 
 非公開リポジトリでは、認証なしの HTTP フェッチが 404 になることがあるため、**認証済みの `gh`** または `gh api` を使ってください。共通の注意事項（`gh pr view` / `gh pr edit`、本文の安全な編集、PR コメントの REST 取得など）は `commands/github-cli-notes.md` を一次参照としてください。
