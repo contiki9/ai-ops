@@ -13,6 +13,7 @@ AI に依存する現代の開発プロセスを効率化するための、AI �
 - `skills/` : エージェント向けの補助スキル。各サブディレクトリに `SKILL.md` があります。
   - **`create-command`**: 新しい `commands/` 用 Markdown コマンドを追加するときの指針。
   - **`gemini-code-review`**: 作業完了後に Gemini CLI の Code Review 拡張（`/code-review` / `/pr-code-review`）でレビューするときの運用（セットアップは下文「Gemini CLI と Code Review 拡張」）。
+  - **`grill-me`**: 実装前の壁打ちで要件を収束させるための対話スキル。1問ずつ深掘りし、推奨回答案を添えて合意形成まで進める。
 - `AGENTS.md` : AI エージェントがこのリポジトリを扱うための共通ガイドライン。
 
 ## 使い方（AI ツール別セットアップ）
