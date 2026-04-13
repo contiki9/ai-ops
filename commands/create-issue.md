@@ -14,6 +14,7 @@ description: GitHub Issueを作成する
 1. **依頼内容の確認（Confirm request）**
     - 問題の内容、背景、期待する結果をユーザーから整理する
     - 不足している情報があるときだけ追加で質問する
+    - 要件や完了条件が曖昧な場合は、`skills/grill-me` の方針（1問ずつ深掘り、推奨回答案を併記、コードベースで答えられる点は先に調査）で先に要件を収束させる
 2. **Issue 種別の選択（Select issue type）**
     - 必ず `.github/ISSUE_TEMPLATE/` 配下のテンプレートを確認する
     - バグ・不具合: `bug_report.md` を優先する
