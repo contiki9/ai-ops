@@ -42,6 +42,7 @@ PR の本文は `.github/PULL_REQUEST_TEMPLATE.md` に基づいて作成する�
 ## PR テンプレート (PR Template)
 
 - **タイトルの言語**: プルリクエストのタイトルは**日本語**で書く。
+- **実名**: タイトル・本文・コメントに利用者の実名を書かない。人を指すときは `contiki9`、または「運営者」「リポジトリ所有者」を使う。
 - 参照: `.github/PULL_REQUEST_TEMPLATE.md`
 - 少なくとも以下を含めること:
   - `# 概要/対応issue`

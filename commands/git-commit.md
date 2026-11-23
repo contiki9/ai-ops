@@ -46,3 +46,4 @@ Create a short, focused commit message and commit staged changes.
 - **Capitalize:** First letter of summary should be capitalized
 - **No period:** Don't end the subject line with a period
 - **Describe why:** Not just what - "fix stuff" is meaningless
+- **No real name:** Do not put the user's real name in the commit message. Refer to them as GitHub account `contiki9`, 「運営者」, or 「リポジトリ所有者」. Global Git `user.name` and Cursor auto committer names are out of scope.
